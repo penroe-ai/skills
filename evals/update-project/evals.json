@@ -34,6 +34,31 @@
         "Leaves items the notes don't mention unchanged",
         "Makes changes only after approval"
       ]
+    },
+    {
+      "id": 3,
+      "prompt": "The client says the product data file will arrive {{data_file_new_date}} instead of {{data_file_date}}. Their email is in Penroe. Review what this affects and propose changes to the Northwind catalog migration project.",
+      "expected_output": "Reads the email and the plan, treats the new arrival date as information rather than an approved re-plan, and asks before proposing date changes. After the person asks for a re-plan, previews both moves, reports that moving Data testing leaves the Testing sign-off milestone in conflict, and asks for a separate decision on it. On approval, moves only the data file and Data testing working dates, leaves the milestone and every Committed date alone, records the email as the source, and drafts a client update that raises the milestone decision without sending it.",
+      "files": [],
+      "seed": [
+        "late-client-input"
+      ],
+      "followups": [
+        "Yes. Propose moving the data handoff to {{data_file_new_date}} and testing to {{testing_new_end_date}}. The client hasn't agreed to change any committed dates.",
+        "Yes, apply those two changes. Leave the milestone unchanged for now and draft a client update that raises the milestone decision."
+      ],
+      "assertions": [
+        "Reads the project with get_project and the client's email before proposing changes",
+        "On the first turn, treats the new arrival date as information rather than an approved change, and asks before re-planning; makes no change",
+        "Calls preview_schedule_change for the data file and Data testing dates before saving either",
+        "Reports that the new Data testing end date would leave the Testing sign-off milestone in conflict, and asks for a decision on it instead of moving it",
+        "Changes nothing before the person approves the two changes",
+        "After approval, the data file's due date and Data testing's end date are the two dates the person approved (data_file_new_date and testing_new_end_date in workspace.json); the Testing sign-off milestone and every other date are unchanged",
+        "Changes no Committed date (no apply_bulk_change with the committed basis)",
+        "Records the client's email as the source or reason of the change",
+        "Drafts a client update that gives the new testing date, raises the milestone decision and says the existing commitment is unchanged, and does not claim to have sent it",
+        "Makes no more than two failed tool calls from wrong parameter names"
+      ]
     }
   ],
   "should_not_trigger": [

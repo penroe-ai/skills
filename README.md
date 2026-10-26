@@ -25,6 +25,40 @@ This repository is the Penroe plugin. It bundles two things:
 
 Every skill shows you what it plans to do before it changes anything in Penroe, and cites where each fact came from.
 
+## Example: a client input arrives late
+
+*Illustrative conversation, not a recorded customer run. The project, dates and responses below are examples of the workflow these skills guide.*
+
+Northwind's project plan has a client data handoff on November 3 and testing on November 4. Testing needs that data. The client emails to say the file will arrive on November 5.
+
+**You:**
+
+> The client says the data file will arrive November 5 instead of November 3. Here's their email. Review what this affects and propose changes to the Northwind project.
+
+The assistant reads the email and the current project plan. It distinguishes the client's expected arrival date from an approved change to the plan, then asks whether you want to re-plan the affected work.
+
+**You:**
+
+> Yes. Propose moving the data handoff to November 5 and testing to November 6. The client hasn't agreed to change any committed dates.
+
+The assistant previews the date changes and reports the conflicts returned by Penroe. Suppose the preview identifies a testing milestone still scheduled for November 5:
+
+**Assistant:**
+
+> Testing needs the data file, so its November 4 date conflicts with the expected November 5 arrival. Moving testing to November 6 would also leave the testing milestone on November 5 in conflict.
+>
+> I propose moving the handoff to November 5 and testing to November 6. The milestone needs a separate decision. I'll keep the client-committed dates unchanged. Do you approve these two working-date changes?
+
+**You:**
+
+> Yes, apply those two changes. Leave the milestone unchanged for now and draft a client update that raises the milestone decision.
+
+The assistant saves the approved changes, records the reason and source, and reports which items changed. It then drafts the client update from the revised project record:
+
+> With the data file now expected November 5, we've moved testing to November 6 in our working plan. That puts testing after the November 5 milestone. We need to agree how to handle that milestone; the existing client commitment remains unchanged.
+
+You review the draft and send it. The assistant does not move other dates automatically or send the email.
+
 ## Install
 
 ### Claude Code
