@@ -42,7 +42,7 @@ Add Penroe from **Customize → Plugins**, either from the plugin directory or b
 
 ### ChatGPT and Codex
 
-Install Penroe from the ChatGPT plugin directory. See [penroe.ai/integrations/openai](https://penroe.ai/integrations/openai).
+The Penroe plugin isn't in OpenAI's plugin directory yet. Until it is, you can connect ChatGPT to Penroe as a custom MCP server (without these skills); see [penroe.ai/integrations/openai](https://penroe.ai/integrations/openai).
 
 ### Other assistants
 
