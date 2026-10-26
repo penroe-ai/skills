@@ -1,0 +1,45 @@
+{
+  "skill_name": "draft-project-update",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft this week's client update for the Northwind website redesign.",
+      "expected_output": "Uses get_writing_context with the client audience and the snapshot, leads with the status and why, writes risks as Risk / Impact / Recommendation, keeps internal deliberation out but the honest status in, shows the draft, and warns that a posted update can't be edited before posting.",
+      "files": [],
+      "assertions": [
+        "Calls get_writing_context with the client audience",
+        "Leads with the project's status and the reason",
+        "Mentions the content timing risk honestly with a recommendation",
+        "Leaves out sentiment readings and internal deliberation",
+        "Shows a draft and does not post without approval",
+        "Says a posted update can't be edited"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Give me a quick roll-up of all my projects for the leadership meeting.",
+      "expected_output": "Uses cross-project calls, reports by exception (counts by status, detail only on at-risk and off-track projects), and gives no percent complete.",
+      "files": [],
+      "assertions": [
+        "Covers all three projects",
+        "Gives detail only on at-risk or off-track projects",
+        "Gives no percent complete",
+        "Does not post anything"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Can you send our weekly status to the Northwind client every Friday?",
+      "expected_output": "Explains Penroe can't email; offers a recurring recipe that saves a draft for review rather than posting automatically.",
+      "files": [],
+      "assertions": [
+        "Says Penroe can't send email",
+        "Offers a recurring recipe or schedule that drafts rather than posts on its own",
+        "Does not post a status update"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Move the due date on the staging environment task to Friday."
+  ]
+}

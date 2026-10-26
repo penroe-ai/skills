@@ -1,0 +1,34 @@
+{
+  "skill_name": "prepare-for-meeting",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Prep me for tomorrow's check-in with Northwind.",
+      "expected_output": "Finds the meeting, asks or states the desired outcome, builds a private brief (status quoted from Penroe, commitments both ways, attendees matched to contacts, risks and the content blocker, questions) and offers a client-safe agenda without sentiment or internal risk talk.",
+      "files": [],
+      "assertions": [
+        "Finds the Northwind weekly check-in with list_upcoming_meetings",
+        "Quotes Penroe's status reason rather than inventing one",
+        "Mentions the content handoff blocker and that Jordan Price can clear it",
+        "Notes open commitments from the last meeting (Jordan's copy, Priya's mockup)",
+        "Keeps any client-facing agenda free of sentiment readings and internal risk discussion",
+        "Makes no changes in Penroe without asking"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have a call with Morgan at Northwind in an hour and I think she's frustrated. What should I know?",
+      "expected_output": "Uses the contact, sentiment and recent activity with quoted evidence, frames the content delay and the landing-page request honestly with an ask, and says when the record is thin.",
+      "files": [],
+      "assertions": [
+        "Looks up Morgan Ellis as a contact",
+        "Cites the recent email about content timing and landing pages",
+        "Says plainly when sentiment evidence is thin rather than inventing it",
+        "Suggests specific questions or asks for the call"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Write up the recap from this morning's Northwind meeting."
+  ]
+}

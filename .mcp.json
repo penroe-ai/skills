@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "penroe": {
+      "type": "http",
+      "url": "https://mcp.penroe.app/mcp"
+    }
+  }
+}

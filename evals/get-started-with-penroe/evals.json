@@ -1,0 +1,35 @@
+{
+  "skill_name": "get-started-with-penroe",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just connected Penroe. What can you actually do with it?",
+      "expected_output": "Calls get_current_user and list_projects (paging to the end), greets the person by name and names the workspace, summarizes their projects in two or three sentences, and offers concrete next steps based on the real projects.",
+      "files": [],
+      "assertions": [
+        "Calls get_current_user",
+        "Calls list_projects",
+        "Greets the person by name and names the workspace",
+        "Mentions at least one real project by name",
+        "Offers concrete next steps tied to the person's projects",
+        "Makes no changes in Penroe"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "ok penroe is hooked up, where do I even start",
+      "expected_output": "Same orientation; points to the job skills that fit, such as preparing for the upcoming Northwind meeting or drafting an update.",
+      "files": [],
+      "assertions": [
+        "Calls list_projects",
+        "Reads at least one project's details or upcoming meetings before suggesting next steps",
+        "Suggests preparing for the Northwind weekly check-in only because a meeting is coming up, naming it",
+        "Names a real blocker or overdue item from the workspace in a suggestion",
+        "Makes no changes in Penroe"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Create the Fernhill project from this SOW."
+  ]
+}

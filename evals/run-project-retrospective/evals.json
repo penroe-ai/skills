@@ -1,0 +1,38 @@
+{
+  "skill_name": "run-project-retrospective",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Let's run a retro on the Northwind launch campaign, it wrapped recently.",
+      "expected_output": "Sets a blameless frame, builds the fact timeline from phase slip, the milestone and risk outcomes, asks the went-well / change questions, turns actions into owned tasks and lessons into proposed plays, and attaches the document after confirmation.",
+      "files": [],
+      "assertions": [
+        "Finds the completed Northwind launch campaign project",
+        "Reports that Messaging and Assets ran later than planned",
+        "Reports the realized video risk and the resolved venue risk",
+        "Uses blameless language about people",
+        "Asks the team questions or prepares them, rather than inventing the team's answers",
+        "After the answers, creates a task owned by Dana for the resourcing checklist with a due date",
+        "Attaches the retrospective with add_project_document and passes the lesson as a reusable correction with no names"
+      ],
+      "followups": [
+        "Team answers: went well, the launch event itself and how fast the client approved messaging. Didn't go well, the video edit landed two weeks late because the editor was shared with another client. Change next time, book dedicated editing time before kickoff. Dana will own a resourcing checklist by the end of next month. Please write it up, create that action item, and send the lesson back to Penroe."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The Larkspur & Vale sprint is going badly and we're likely to end it early. I want a post-mortem, internal only.",
+      "expected_output": "Treats it as a post-mortem for an internal audience, focuses on process not people, and says where the record is thin.",
+      "files": [],
+      "assertions": [
+        "Treats it as internal only",
+        "Focuses on process rather than blaming people",
+        "Says where Penroe's record is thin",
+        "Does not write to Penroe without asking"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "How did yesterday's Northwind check-in go?"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "skill_name": "create-project",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's the signed SOW for Fernhill Coffee. Set the project up in Penroe.",
+      "expected_output": "Reads the whole SOW, checks for an existing project and account, drafts a proposal cited to the SOW grouped as Project / Plan / People / Client / Risks / Gaps, and waits for confirmation. After approval, writes the project team before assigning owners, then the plan, account and contacts, and reports items with no dates or owners and what's left to do in the app.",
+      "files": [
+        "fernhill-sow.md"
+      ],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Does not write anything to Penroe before the person approves",
+        "Proposal cites the SOW for its items",
+        "Creates the design-after-discovery dependency only because the SOW says so",
+        "Asks about or flags week-based dates rather than inventing calendar dates without confirmation",
+        "After the plain go-ahead, adds Dana, Priya and Lee to the project team without asking again",
+        "Assigns owners only after those people are on the project team",
+        "Creates the Fernhill account with the fernhillcoffee.example domain and Riley Chen as a contact",
+        "Adds the SOW's assumptions as risks after the go-ahead, having shown them as proposed risks first",
+        "Does not add labeled suggestions (work not in the SOW) on a plain go-ahead",
+        "Reports what's left to do in the Penroe app"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We just closed a 6-week brand sprint with Juniper Labs. Notes: discovery wk1, concepts wk2-3, refinement wk4-5, final files wk6. Dana leads, Priya designs. Kickoff is the first Monday of next month.",
+      "expected_output": "Builds a small project from the notes without inventing deliverables or dates the notes don't support, derives dates only from the stated kickoff and week ranges after confirming, and asks before adding people to the team.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Shows a proposal and waits for approval before writing",
+        "Does not invent deliverables beyond what the notes describe, or labels any additions as suggestions",
+        "Asks for or states the account domain rather than guessing one",
+        "Creates the project only after approval"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Can you turn this proposal into a project? It's one paragraph: 'Audit of the client's onboarding emails, with recommendations, by end of Q2.'",
+      "expected_output": "Proposes a sparse project (one deliverable or task), doesn't turn 'end of Q2' into a date without asking, and lists the gaps.",
+      "files": [],
+      "assertions": [
+        "Proposes a sparse project: one deliverable or task, with no invented phases or milestones",
+        "Does not convert 'end of Q2' into a specific date without asking",
+        "Lists the gaps (client, dates, owners)",
+        "Makes no changes before confirmation"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Add a task to the Northwind project to book the room for the design review."
+  ]
+}

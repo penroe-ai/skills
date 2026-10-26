@@ -1,0 +1,56 @@
+{
+  "$comment": "Which shared references each skill ships with. scripts/sync-references.mjs copies them into skills/<name>/references/. A file read by two or more skills lives in shared/; a file read by one lives only in that skill's references/.",
+  "skills": {
+    "get-started-with-penroe": ["when-a-tool-is-missing.md"],
+    "create-project": [
+      "how-penroe-models-work.md",
+      "well-formed-project.md",
+      "citing-sources.md",
+      "sending-work-back.md",
+      "when-a-tool-is-missing.md"
+    ],
+    "update-project": [
+      "how-penroe-models-work.md",
+      "well-formed-project.md",
+      "citing-sources.md",
+      "judging-status-and-risk.md",
+      "delivering-bad-news.md",
+      "sending-work-back.md",
+      "when-a-tool-is-missing.md"
+    ],
+    "prepare-for-meeting": [
+      "how-penroe-models-work.md",
+      "citing-sources.md",
+      "judging-status-and-risk.md",
+      "delivering-bad-news.md",
+      "writing-for-an-audience.md",
+      "when-a-tool-is-missing.md"
+    ],
+    "draft-project-update": [
+      "how-penroe-models-work.md",
+      "citing-sources.md",
+      "judging-status-and-risk.md",
+      "delivering-bad-news.md",
+      "writing-for-an-audience.md",
+      "sending-work-back.md",
+      "when-a-tool-is-missing.md"
+    ],
+    "run-project-retrospective": [
+      "how-penroe-models-work.md",
+      "well-formed-project.md",
+      "citing-sources.md",
+      "judging-status-and-risk.md",
+      "writing-for-an-audience.md",
+      "sending-work-back.md",
+      "when-a-tool-is-missing.md"
+    ],
+    "write-task-document": [
+      "how-penroe-models-work.md",
+      "citing-sources.md",
+      "delivering-bad-news.md",
+      "writing-for-an-audience.md",
+      "sending-work-back.md",
+      "when-a-tool-is-missing.md"
+    ]
+  }
+}

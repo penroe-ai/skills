@@ -1,0 +1,42 @@
+{
+  "skill_name": "update-project",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Morgan at Northwind emailed asking to push the design review two weeks so their content team can finish the copy. Update the Northwind website redesign project.",
+      "expected_output": "Reads the snapshot and the email, asks whether the client agreed to a new Committed date or this is a re-plan, previews the schedule change and shows conflicts, applies only after confirmation, and records the source and reason.",
+      "files": [],
+      "followups": [
+        "The client agreed to the new date. Go ahead."
+      ],
+      "assertions": [
+        "Reads the project with get_project before proposing changes",
+        "Asks whether this is approved or changes what the client was promised before moving dates",
+        "Calls preview_schedule_change before changing a date",
+        "Makes no change before the person confirms",
+        "After the client agreed, changes the Design review milestone's Committed date (apply_bulk_change with the Committed basis), not only its working date",
+        "Records where the change came from (the email) in a reason or comment",
+        "Makes no more than two failed tool calls from wrong parameter names"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Notes from today's Northwind check-in, can you update the project? - homepage mockup v2 approved - Sam is out next week, Lee covers the QA plan - the inventory API work is probably slipping, maybe a week",
+      "expected_output": "Proposes accepting the homepage mockup, an owner change for the QA plan task that needs its own yes, and treats the vague API slip as a risk or comment rather than a date change; leaves unmentioned items alone.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Proposes marking the homepage mockup accepted",
+        "Proposes moving the QA plan task to Lee and asks for confirmation of the owner change",
+        "Does not move any date for the vague API slip; treats it as a risk or comment",
+        "Leaves items the notes don't mention unchanged",
+        "Makes changes only after approval"
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "What's the status of the Northwind website redesign?"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "skill_name": "write-task-document",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use Penroe's get_writing_context for {{change_order_task_key}} and help me write the document it needs.",
+      "expected_output": "Calls get_writing_context with an audience and purpose, confirms the plan before drafting, drafts a change order with [TBD] placeholders for unknown cost, then sends it back with add_project_document and the task.",
+      "files": [],
+      "followups": [
+        "Yes, that plan works. Write it.",
+        "Looks good. Send it back to Penroe."
+      ],
+      "assertions": [
+        "Calls get_writing_context with an audience",
+        "Confirms the plan before drafting",
+        "Includes the request, impact, options, a recommendation and an approval section",
+        "Shows unknown cost or schedule impact as a visible placeholder rather than estimating",
+        "Calls add_project_document with the task after the person says to send it back"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write a handoff note for the Northwind website redesign. Lee is taking over the build from Dana.",
+      "expected_output": "Gathers project facts, confirms the plan, writes a handoff with context, open work and owners, decisions, people and watch-outs, without secrets.",
+      "files": [],
+      "assertions": [
+        "Confirms the plan before drafting",
+        "Includes open work with owners and the content blocker",
+        "Names client contacts and their roles",
+        "Mentions the client's recent request to move the design review or add landing pages",
+        "Does not write out secrets or credentials",
+        "Does not invent facts that Penroe doesn't hold"
+      ],
+      "followups": [
+        "Go ahead and write it."
+      ]
+    }
+  ],
+  "should_not_trigger": [
+    "Post this week's status update on Northwind."
+  ]
+}

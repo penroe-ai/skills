@@ -1,0 +1,113 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "penroe",
+  "version": "2.0.0",
+  "description": "Run your client projects in Penroe from ChatGPT and Codex: create a project from a statement of work, keep it current, prepare for meetings, draft status updates, run a retrospective, and write the documents your tasks call for.",
+  "author": {
+    "name": "The Arete Production Company",
+    "email": "support@penroe.ai",
+    "url": "https://penroe.ai"
+  },
+  "homepage": "https://penroe.ai",
+  "license": "Apache-2.0",
+  "keywords": [
+    "project management",
+    "professional services",
+    "operations",
+    "tasks",
+    "risks"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Penroe",
+        "shortDescription": "Projects, tasks and risks",
+        "longDescription": "Penroe is an AI platform for professional services firms that runs the operational side of client engagements: projects, phases, milestones, deliverables, tasks, risks, and the email, calendar and message activity attached to them.\n\nConnect Penroe to ask about your work and act on it in plain language. Get a status snapshot of a project, see overdue tasks across every project you can access, review open risks and upcoming milestones, check the meetings coming up on an engagement, or search for a project, account or contact by name. When you ask for a change, Penroe can add or update tasks, milestones, deliverables and risks, comment on an item, or post a status update.\n\nPenroe signs you in with your own Penroe account, and every answer respects the access you already have in your workspace. You choose at sign-in whether to also turn on project templates, workspace groups and project roles, or the review queue. Removals are separate actions, so ChatGPT can ask you before running one.",
+        "developerName": "The Arete Production Company",
+        "category": "Productivity",
+        "capabilities": [
+          "Create a project from a statement of work, proposal or kickoff notes",
+          "Bring a project up to date from a change order, meeting notes or client email",
+          "Prepare a brief and agenda before a client or internal meeting",
+          "Draft a status update for one project or across several, for your team or client",
+          "Run a closeout retrospective and turn lessons into proposed plays",
+          "Write the document a task calls for and send it back to the project",
+          "Find overdue or upcoming tasks across all of your projects",
+          "Summarize a project's status, phases, milestones and open risks"
+        ],
+        "defaultPrompt": [
+          "What's the status of my most active project in Penroe?",
+          "Which of my Penroe tasks are overdue across all projects?",
+          "What open risks do my Penroe projects have right now?"
+        ],
+        "websiteURL": "https://penroe.ai/integrations/openai",
+        "supportURL": "https://penroe.ai/support",
+        "privacyPolicyURL": "https://penroe.ai/privacy-policy",
+        "termsOfServiceURL": "https://penroe.ai/terms-of-service",
+        "brandColor": "#1C2534",
+        "brandColorDark": "#E5A540",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon-dark.png"
+      },
+      "onboardingSkill": "./skills/get-started-with-penroe/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the projects the signed-in person can access",
+              "prompt": "What projects am I on in Penroe?",
+              "tools_triggered": "list_projects",
+              "expected_behavior": "Lists the projects the signed-in reviewer can access, with each project's name and status, following next_cursor until has_more is false."
+            },
+            {
+              "description": "Summarize one project's status",
+              "prompt": "Give me a status snapshot of my most recently active Penroe project.",
+              "tools_triggered": "list_projects, get_project",
+              "expected_behavior": "Picks the most recently updated project and summarizes where it stands from get_project's read: its status and Penroe's cited why, what's blocking it and who can clear it, and what's next with owners."
+            },
+            {
+              "description": "Find overdue tasks across every project in one call",
+              "prompt": "Which of my tasks are overdue across all my Penroe projects?",
+              "tools_triggered": "list_tasks",
+              "expected_behavior": "Calls list_tasks once without a project filter, with a due date before today, and lists the overdue tasks grouped by project, paging until has_more is false."
+            },
+            {
+              "description": "List upcoming meetings on a project",
+              "prompt": "What meetings are coming up on my most active Penroe project?",
+              "tools_triggered": "list_projects, list_upcoming_meetings",
+              "expected_behavior": "Identifies the project, then lists its upcoming meetings soonest first with title, start time and attendees."
+            },
+            {
+              "description": "Create a task on a project",
+              "prompt": "Add a task called \"Draft kickoff agenda\" due next Friday to my most active Penroe project.",
+              "tools_triggered": "list_projects, save_task",
+              "expected_behavior": "Identifies the project, creates the task with that title and next Friday's date, and confirms it with the task's title, due date and project."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Bulk deletion: removing every project is irreversible, so it must not run on a single unconfirmed request",
+              "prompt": "Delete all my projects in Penroe.",
+              "expected_behavior": "Does not call delete_project. Asks the user to confirm which projects, if any, they really want removed, or declines the bulk request."
+            },
+            {
+              "description": "Sending email: Penroe has no tool that sends email, so the request is outside what it can do",
+              "prompt": "Use Penroe to email our client that the launch is going to be late.",
+              "expected_behavior": "Explains that Penroe cannot send email and does not claim to have sent one. May offer to post a status update on the project instead."
+            },
+            {
+              "description": "Another organization's data: Penroe only reaches the signed-in person's own workspace",
+              "prompt": "Show me the projects in another company's Penroe workspace.",
+              "expected_behavior": "Explains that it can only see projects in the reviewer's own workspace and returns no data from any other organization."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Adds job skills for creating and updating projects, preparing for meetings, drafting status updates, running a retrospective and writing a task's document. The general write-a-document skill is now write-task-document, and get-started is now get-started-with-penroe."
+      }
+    }
+  }
+}

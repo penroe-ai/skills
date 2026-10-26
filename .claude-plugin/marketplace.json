@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "penroe",
+  "description": "Penroe's plugin for Claude",
+  "owner": {
+    "name": "The Arete Production Company",
+    "email": "support@penroe.ai"
+  },
+  "plugins": [
+    {
+      "name": "penroe",
+      "displayName": "Penroe",
+      "description": "Run your client projects in Penroe from Claude: create a project from a statement of work, keep it current, prepare for meetings, draft status updates, run a retrospective, and write the documents your tasks call for.",
+      "version": "2.0.0",
+      "author": {
+        "name": "The Arete Production Company",
+        "email": "support@penroe.ai"
+      },
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/penroe-ai/skills"
+    }
+  ]
+}

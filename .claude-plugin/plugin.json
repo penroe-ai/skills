@@ -1,0 +1,24 @@
+{
+  "name": "penroe",
+  "displayName": "Penroe",
+  "version": "2.0.0",
+  "description": "Run your client projects in Penroe from Claude: create a project from a statement of work, keep it current, prepare for meetings, draft status updates, run a retrospective, and write the documents your tasks call for.",
+  "author": {
+    "name": "The Arete Production Company",
+    "email": "support@penroe.ai",
+    "url": "https://penroe.ai"
+  },
+  "homepage": "https://penroe.ai",
+  "repository": "https://github.com/penroe-ai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "project management",
+    "professional services",
+    "status updates",
+    "meetings",
+    "retrospectives"
+  ],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "privacyPolicyUrl": "https://penroe.ai/privacy-policy"
+}
