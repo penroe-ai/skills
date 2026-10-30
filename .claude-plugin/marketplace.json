@@ -11,7 +11,7 @@
       "name": "penroe",
       "displayName": "Penroe",
       "description": "Run your client projects in Penroe from Claude: create a project from a statement of work, keep it current, prepare for meetings, draft status updates, run a retrospective, and write the documents your tasks call for.",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "author": {
         "name": "The Arete Production Company",
         "email": "support@penroe.ai"

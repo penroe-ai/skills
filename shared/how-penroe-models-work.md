@@ -34,8 +34,9 @@ Penroe works out whether an item is late: **overdue** (its own date has passed) 
 
 ## Risks and blockers
 
-- A **risk** is something that could happen and would hurt the plan. An **issue** is something already happening. In Penroe, a risk that comes true is marked realized, not deleted.
-- Risk statuses: open, accepted (we know and are living with it), resolved (the mitigation worked), dismissed (a false alarm, or no longer worth tracking) and realized (it happened). Change a risk's status, impact or likelihood with `update_risk_assessment`, and give the reason in its feedback.
+- A **risk** is something that could happen and would hurt the plan. An **issue** is something already happening. In Penroe, a risk that comes true moves to Happening. It isn't deleted.
+- A risk is Watching (it might happen), Happening (it has happened) or Closed. A closed risk says why: it didn't happen, it was handled, it was never a risk, or it was accepted and the team is living with it. Move a risk between these with `save_risk`: give the stage, the closed reason when closing, and the person's why in its reason. Change a risk's impact or likelihood with `update_risk_assessment`, and give the reason in its feedback.
+- `list_risks` and `get_risk` also show an older status (open, realized, resolved, accepted or dismissed). Use it to filter the list, not to change a risk.
 - A **blocker** is a risk that is stopping named work right now, which the work's owner can't clear alone. A blocker names who can clear it and what is being asked of them (`set_blocker_call`).
 
 ## People

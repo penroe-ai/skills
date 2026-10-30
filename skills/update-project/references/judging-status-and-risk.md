@@ -29,7 +29,7 @@ A few rules keep the reading honest:
 
 ## Risks
 
-- A risk is a forecast; an issue is already happening. When a risk comes true, mark it realized.
+- A risk is a forecast; an issue is already happening. When a risk comes true, move it to Happening.
 - A risk closes on evidence that its conditions are gone. Never close one because it went quiet or got old.
 - Partly mitigated is not resolved.
 - A soft signal (a worried tone, a vague delay) needs to show up twice, in two sources or at two moments, before it becomes a risk. A hard signal (a named commitment that will be missed) needs only one.
