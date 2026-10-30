@@ -46,7 +46,7 @@ For each item, cite the source with a short quote. Then:
 
 - Propose only what the source states. Leave alone items it doesn't mention. Raise "you didn't mention X" only when the source covered nearly everything else of that kind.
 - Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or a comment. A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
-- Change a risk's status, impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
+- Move a risk to Happening or Closed, or reopen it, with `save_risk`, giving the closed reason when closing and the person's why in its reason. Change its impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
 - Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in a comment (`add_comment`) when it doesn't.
 
 ## 4. Preview and confirm
