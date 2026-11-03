@@ -14,6 +14,7 @@
 ## While you change it
 
 - Record why. When the tool takes a reason, say where the change came from (the email subject, the meeting and its date) and who approved it. When it doesn't, add a short comment on the item (`add_comment`).
+- Text you write into Penroe, such as a task description, a risk or a comment, uses a person's stated pronouns or singular "they", never pronouns guessed from a name. When "they" could mean more than one person, repeat the name.
 
 ## After
 
