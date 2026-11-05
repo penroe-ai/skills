@@ -28,7 +28,7 @@ Read the whole source. Then ask, in one message, only for what the source doesn'
 
 - Which document is authoritative, if there are several (a signed statement of work outranks a proposal, which outranks notes)?
 - Was anything promised during the sale that isn't in the document?
-- Who is the client, and who on their side approves deliverables?
+- Who is the client, and who on their side approves deliverables? Or is this the firm's own work, with no client?
 - Which dates, if any, were promised to the client, and are any milestones tied to payment?
 - Should Penroe use a project template? Offer this when `list_project_templates` is in your tools. When it isn't and the person mentions a template, tell them once that the Project templates option adds it.
 
@@ -70,12 +70,12 @@ Make these two clear in the proposal itself ("Reply 'add the suggestions' to inc
 
 Write in this order, because later items point at earlier ones:
 
-1. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach.
-2. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
-3. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
-4. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
-5. Tasks (`save_task`).
-6. The account (`save_account`), then contacts (`save_contact`). If the account's domain already belongs to another account, the account exists; add it to the "left in the app" list.
+1. The client account (`save_account`), unless the work is the firm's own or the account already exists (use its ID from `list_accounts` or `search`). A new project needs a client account or the Internal mark, so this comes first. If the account's domain already belongs to another account, that account exists; use it. Then contacts (`save_contact`).
+2. The project (`save_project`) with the client account's ID, or marked Internal for the firm's own work. If a template was chosen, `create_project_from_template` instead with the same account or Internal choice, then reconcile it with the documents using the update-project approach.
+3. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
+4. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
+5. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
+6. Tasks (`save_task`).
 7. Confirmed risks (`save_risk`).
 8. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.
 9. The source document (`add_project_document`), so the project keeps its origin.
@@ -87,7 +87,7 @@ If a write fails, stop and tell the person what was and wasn't created. Don't re
 Tell the person, by name and item key, what you created. Then list what's left:
 
 - items with no dates and items with no owner, and offer to fill them in now
-- what they still set in the Penroe app: activity rules beyond the defaults, linking an account that already exists, a Slack channel, and groups when you couldn't set them
+- what they still set in the Penroe app: activity rules beyond the defaults, a Slack channel, and groups when you couldn't set them
 - that the attached source document is visible only to them until they share it
 
 ## Gotchas
@@ -95,6 +95,7 @@ Tell the person, by name and item key, what you created. Then list what's left:
 - Never invent dates, owners, phases or milestones. A one-paragraph source gives a small project. That's the right result.
 - Order and adjacency don't create a dependency. Only causal words do ("can't start until").
 - A job title isn't a project role and doesn't make someone a decision-maker.
+- A new project needs a client account or the Internal mark. Ask which if the source doesn't say. Don't mark a client project Internal to get past the check.
 - Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong client.
 - Owners must be on the project team as admins or members. Add them to the team first.
 - A contact needs an email address. List contacts the source names without one as a gap, rather than guessing an address.

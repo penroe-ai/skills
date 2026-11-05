@@ -38,7 +38,7 @@ Use this when you build a project or change its structure. A well-formed project
 ## The client
 
 - An account needs the client's real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
-- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; ask the person to add it to the project in the app.
+- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; use it for the project.
 - Name the sponsor and the single client approver as contacts when the source identifies them.
 
 ## Risks
@@ -58,6 +58,5 @@ Tell the person what's left for them to do in the Penroe app:
 
 - activity rules beyond the defaults (which email and meetings come into the project automatically)
 - Committed start dates
-- linking an account that already exists in the workspace
 - a Slack channel for the project
 - groups that should be able to see the project, when the connection can't set them
