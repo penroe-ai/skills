@@ -36,7 +36,7 @@ Don't ask about anything the source already answers. When the source is short, d
 
 ## 2. Check what already exists
 
-- `list_projects` with a search on the client or engagement name, so you don't create a duplicate.
+- `list_projects` with a search on the account or engagement name, so you don't create a duplicate.
 - `search` for the account and the contacts the source names.
 - `list_workspace_members` for the people on our side who will be on the project team or own work.
 - If the Groups and project roles option is on, `list_project_roles` so you can match member and contact roles by meaning. Without it, leave roles out and say so.
@@ -48,8 +48,8 @@ Show the person one proposal, grouped like this:
 - **Project:** title, a one-paragraph summary, and a description covering scope, explicit exclusions, assumptions and payment terms in the source's words.
 - **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and the work that gates them, phase dependencies, and tasks. Tasks are at a size someone can finish and report done.
 - **People:** the project team with their member type (admin, member or viewer) and, when roles are available, their role.
-- **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the client approver when the source identifies them.
-- **Risks:** proposed, not yet added. Assumptions, client dependencies and exclusions in a statement of work are the usual source.
+- **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the approver on the account's side when the source identifies them.
+- **Risks:** proposed, not yet added. Assumptions, dependencies on the account and exclusions in a statement of work are the usual source.
 - **Gaps:** items with no dates, items with no owner, and anything you couldn't find, each said plainly.
 - **Suggested additions:** work good practice expects that the source doesn't state (project management, client reviews, integration and testing). Keep this separate and clearly labeled.
 
@@ -72,7 +72,7 @@ Write in this order, because later items point at earlier ones:
 
 1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
 2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs one of these:
-   - The account from step 1, by its ID. This also records it as the project's client.
+   - The account from step 1, by its ID. This also gives the account the role "client" on the project.
    - `internal: true`: the work is the firm's own, with no account.
 3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.
 4. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
@@ -99,7 +99,7 @@ Tell the person, by name and item key, what you created. Then list what's left:
 - Order and adjacency don't create a dependency. Only causal words do ("can't start until").
 - A job title isn't a project role and doesn't make someone a decision-maker.
 - A new project needs an account or the Internal mark. Ask which if the source doesn't say. For an account that doesn't exist yet, create the account first, then the project with its ID. Never mark a project Internal to skip the account.
-- Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong client.
+- Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong account.
 - Owners must be on the project team as admins or members. Add them to the team first.
 - A contact needs an email address. List contacts the source names without one as a gap, rather than guessing an address.
 - Penroe can't send the kickoff email. Offer to draft it with the write-task-document approach instead.

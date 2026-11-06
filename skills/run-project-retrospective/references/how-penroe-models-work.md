@@ -46,7 +46,7 @@ Penroe works out whether an item is late: **overdue** (its own date has passed) 
 - **The project team** are the workspace members on the project. Their member type (admin, member or viewer) decides what they can see and change. An owner of work must be an admin or member, not a viewer.
 - **A project role** (Project Manager, Designer, Executive Sponsor) is the part someone plays. It grants no access. Roles are optional and need the Groups and project roles option on the connection.
 - **An account** is an external organization the firm works with, such as a customer, vendor or partner. It owns exactly one email domain, which is how Penroe matches email to it.
-- **A contact** is a person the firm works with, usually on the client side. A contact belongs to at most one account and can hold a contact role on a project.
+- **A contact** is a person the firm works with, usually on the account's side. A contact belongs to at most one account and can hold a contact role on a project.
 
 ## Activity
 

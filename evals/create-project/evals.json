@@ -47,7 +47,7 @@
       "assertions": [
         "Proposes a sparse project: one deliverable or task, with no invented phases or milestones",
         "Does not convert 'end of Q2' into a specific date without asking",
-        "Lists the gaps (client, dates, owners)",
+        "Lists the gaps (account, dates, owners)",
         "Makes no changes before confirmation"
       ]
     },
