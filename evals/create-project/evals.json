@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Here's the signed SOW for Fernhill Coffee. Set the project up in Penroe.",
-      "expected_output": "Reads the whole SOW, checks for an existing project and account, drafts a proposal cited to the SOW grouped as Project / Plan / People / Client / Risks / Gaps, and waits for confirmation. After approval, writes the project team before assigning owners, then the plan, account and contacts, and reports items with no dates or owners and what's left to do in the app.",
+      "expected_output": "Reads the whole SOW, checks for an existing project and account, drafts a proposal cited to the SOW grouped as Project / Plan / People / Account / Risks / Gaps, and waits for confirmation. After approval, writes the project team before assigning owners, then the plan, account and contacts, and reports items with no dates or owners and what's left to do in the app.",
       "files": [
         "fernhill-sow.md"
       ],
@@ -47,8 +47,55 @@
       "assertions": [
         "Proposes a sparse project: one deliverable or task, with no invented phases or milestones",
         "Does not convert 'end of Q2' into a specific date without asking",
-        "Lists the gaps (client, dates, owners)",
+        "Lists the gaps (account, dates, owners)",
         "Makes no changes before confirmation"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "New customer: Larkspur Dental (larkspurdental.example) signed us for a 4-week website refresh. Riley Okafor (riley@larkspurdental.example) approves the work. We have no account for them in Penroe yet. Set it up.",
+      "expected_output": "Proposes the project and shows it is for a new account, then after approval creates the account with no project, creates the project with that account's ID, and adds the contact on the project. Never marks the project Internal.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Shows a proposal that names Larkspur Dental as a new account and waits for approval before writing",
+        "Creates the Larkspur Dental account with the larkspurdental.example domain before creating the project, without a project_id",
+        "Creates the project with that account's ID as account_id",
+        "Does not pass an owner when creating the account, leaving the creator as its owner",
+        "Never marks the project Internal",
+        "Adds Riley Okafor as a contact on the project"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up a project for Fernhill Coffee's menu redesign: discovery, two concept rounds, final files, six weeks. Fernhill Coffee is already an account in Penroe.",
+      "expected_output": "Finds the existing Fernhill account, creates the project with that account's ID, and never marks the project Internal.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Looks the account up with list_accounts or search instead of creating a new one",
+        "Creates the project with that account's ID as account_id",
+        "Never marks the project Internal",
+        "Does not call save_account"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Create a project for our own internal tooling cleanup: audit the scripts folder, remove dead scripts, document what's left. No account, just us, three weeks.",
+      "expected_output": "Treats the work as the firm's own, asks nothing about an account, and creates the project marked Internal with no account.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Does not ask for an account or email domain",
+        "Creates the project with internal: true",
+        "Does not create an account or call set_project_account_role",
+        "Does not take the Internal mark off"
       ]
     }
   ],

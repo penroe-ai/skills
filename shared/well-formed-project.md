@@ -31,17 +31,18 @@ Use this when you build a project or change its structure. A well-formed project
 - "The team will handle it" names nobody.
 - A job title isn't a project role and doesn't make someone a decision-maker. "VP Operations" tells you a title. "Sam will approve all deliverables" tells you a role.
 - Match a role to an existing one by meaning. "Project Mgr" is "Project Manager"; "Product Manager" is not. When nothing matches, leave it unset rather than picking the closest name.
-- Place a person on the client side or ours only on structural evidence: a signature block, a client heading, or an email domain.
+- Place a person on the account's side or ours only on structural evidence: a signature block, a heading naming the account, or an email domain.
 
-## The client
+## The account
 
-- An account needs the client's real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
-- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; ask the person to add it to the project in the app.
-- Name the sponsor and the single client approver as contacts when the source identifies them.
+- An account needs its real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
+- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; find its ID with `list_accounts` or `search`. Pass that ID as the account when you create the project, or add it to an existing project with `set_project_account_role` and the role "client".
+- A new account is owned by the person creating it. Set an owner only when the person asks for someone else; a change that would leave the person unable to see the account needs their agreement first.
+- Name the sponsor and the single approver on the account's side as contacts when the source identifies them.
 
 ## Risks
 
-- A statement of work's assumptions, dependencies on the client and exclusions are the usual source of a project's first risks. Propose them; don't add them without a yes.
+- A statement of work's assumptions, dependencies on the account and exclusions are the usual source of a project's first risks. Propose them; don't add them without a yes.
 - Each risk is one concrete thing on this project, with the quote it came from.
 
 ## When a template is involved
@@ -56,6 +57,5 @@ Tell the person what's left for them to do in the Penroe app:
 
 - activity rules beyond the defaults (which email and meetings come into the project automatically)
 - Committed start dates
-- linking an account that already exists in the workspace
 - a Slack channel for the project
 - groups that should be able to see the project, when the connection can't set them

@@ -47,6 +47,7 @@ For each item, cite the source with a short quote. Then:
 - Propose only what the source states. Leave alone items it doesn't mention. Raise "you didn't mention X" only when the source covered nearly everything else of that kind.
 - Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or a comment. A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
 - Move a risk to Happening or Closed, or reopen it, with `save_risk`, giving the closed reason when closing and the person's why in its reason. Change its impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
+- Say what an account is to a project with `set_project_account_role`: the role "client" for the account the work is for, "partner", or "observed". It adds the account to the project if it isn't on it. Set "client" or "partner" only when the person said so. A suggestion from an email is not that.
 - Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in a comment (`add_comment`) when it doesn't.
 
 ## 4. Preview and confirm
@@ -69,6 +70,7 @@ For each item, cite the source with a short quote. Then:
 - "It's running late" is a risk or a forecast note, never a quiet change to the plan.
 - A risk closes on evidence that its conditions are gone, never because it went quiet. Partly mitigated isn't resolved.
 - Starting isn't finishing, and "should be done Friday" isn't done. Leave ambiguous items open.
+- Changing an account's owner with `save_account` needs its own clear yes. If Penroe says the change would leave the person unable to see the account, tell them, and repeat it with the confirm_lose_access option only if they agree.
 - To chase an owner for news on a task, deliverable or risk instead of changing it, use `request_update`. It notifies the owner in Penroe and Slack, and the person starts watching the item.
 - An owner must be on the project team as an admin or member. Don't invent one; list unowned items instead.
 - If you're about to tell the client about a slip, use [delivering-bad-news.md](references/delivering-bad-news.md).

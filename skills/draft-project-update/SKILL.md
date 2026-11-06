@@ -23,7 +23,7 @@ The tools named here come from the Penroe connector. Read [writing-for-an-audien
 
 Ask for whatever the request doesn't say:
 
-- Which project, or which set for a roll-up (all of mine, one client's, the ones at risk)?
+- Which project, or which set for a roll-up (all of mine, one account's, the ones at risk)?
 - Who reads it: the project team, leadership, or the client? (Leadership uses the team audience in Penroe.)
 - What period does it cover? Since the last update is the usual answer.
 - Is there a decision or ask they want at the top?
