@@ -36,7 +36,7 @@ Use this when you build a project or change its structure. A well-formed project
 ## The client
 
 - An account needs the client's real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
-- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; use it for the project.
+- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; find its ID with `list_accounts` or `search` and attach it to the project with `set_project_account_role` as the client role.
 - Name the sponsor and the single client approver as contacts when the source identifies them.
 
 ## Risks

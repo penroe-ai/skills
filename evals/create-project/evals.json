@@ -50,6 +50,54 @@
         "Lists the gaps (client, dates, owners)",
         "Makes no changes before confirmation"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "New client: Larkspur Dental (larkspurdental.example) signed us for a 4-week website refresh. Riley Okafor (riley@larkspurdental.example) approves the work. We have no account for them in Penroe yet. Set it up.",
+      "expected_output": "Proposes the project and shows it is for a new client, then after approval creates the project marked Internal because the account tools need a project, creates the account on it, sets the client role, and only then takes the Internal mark off.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Shows a proposal that names Larkspur Dental as a new client account and waits for approval before writing",
+        "Does not call save_account before a project exists",
+        "Creates the project with internal: true, not with an account_id",
+        "Creates the Larkspur Dental account with the larkspurdental.example domain on that project",
+        "Calls set_project_account_role with client before taking the Internal mark off",
+        "Takes the Internal mark off (internal: false) as the last step of setting up the client, so the project is not left Internal",
+        "Adds Riley Okafor as a contact"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up a project for Fernhill Coffee's menu redesign: discovery, two concept rounds, final files, six weeks. Fernhill Coffee is already an account in Penroe.",
+      "expected_output": "Finds the existing Fernhill account, creates the project with that account's ID, and never marks the project Internal.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Looks the account up with list_accounts or search instead of creating a new one",
+        "Creates the project with that account's ID as account_id",
+        "Never marks the project Internal",
+        "Does not call save_account"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Create a project for our own internal tooling cleanup: audit the scripts folder, remove dead scripts, document what's left. No client, just us, three weeks.",
+      "expected_output": "Treats the work as the firm's own, asks nothing about a client, and creates the project marked Internal with no account.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Does not ask for a client account or email domain",
+        "Creates the project with internal: true",
+        "Does not create an account or call set_project_account_role",
+        "Does not take the Internal mark off"
+      ]
     }
   ],
   "should_not_trigger": [
