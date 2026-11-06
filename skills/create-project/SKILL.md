@@ -70,7 +70,7 @@ Make these two clear in the proposal itself ("Reply 'add the suggestions' to inc
 
 Write in this order, because later items point at earlier ones:
 
-1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
+1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's, and the person creating it owns it. Leave the owner unset unless the person names someone else: naming someone else is refused when it would leave the person unable to see the account, unless they are a workspace admin. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
 2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs one of these:
    - The account from step 1, by its ID. This also gives the account the role "client" on the project.
    - `internal: true`: the work is the firm's own, with no account.

@@ -63,6 +63,7 @@
         "Shows a proposal that names Larkspur Dental as a new account and waits for approval before writing",
         "Creates the Larkspur Dental account with the larkspurdental.example domain before creating the project, without a project_id",
         "Creates the project with that account's ID as account_id",
+        "Does not pass an owner when creating the account, leaving the creator as its owner",
         "Never marks the project Internal",
         "Adds Riley Okafor as a contact on the project"
       ]

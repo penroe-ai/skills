@@ -37,6 +37,7 @@ Use this when you build a project or change its structure. A well-formed project
 
 - An account needs its real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
 - Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; find its ID with `list_accounts` or `search`. Pass that ID as the account when you create the project, or add it to an existing project with `set_project_account_role` and the role "client".
+- A new account is owned by the person creating it. Set an owner only when the person asks for someone else; a change that would leave the person unable to see the account needs their agreement first.
 - Name the sponsor and the single approver on the account's side as contacts when the source identifies them.
 
 ## Risks
