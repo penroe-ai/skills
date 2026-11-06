@@ -54,19 +54,17 @@
     {
       "id": 4,
       "prompt": "New customer: Larkspur Dental (larkspurdental.example) signed us for a 4-week website refresh. Riley Okafor (riley@larkspurdental.example) approves the work. We have no account for them in Penroe yet. Set it up.",
-      "expected_output": "Proposes the project and shows it is for a new account, then after approval creates the project marked Internal because the account tools need a project, creates the account on it, sets the role \"client\", and only then takes the Internal mark off.",
+      "expected_output": "Proposes the project and shows it is for a new account, then after approval creates the account with no project, creates the project with that account's ID, and adds the contact on the project. Never marks the project Internal.",
       "files": [],
       "followups": [
         "Looks right. Go ahead."
       ],
       "assertions": [
         "Shows a proposal that names Larkspur Dental as a new account and waits for approval before writing",
-        "Does not call save_account before a project exists",
-        "Creates the project with internal: true, not with an account_id",
-        "Creates the Larkspur Dental account with the larkspurdental.example domain on that project",
-        "Calls set_project_account_role with the role \"client\" before taking the Internal mark off",
-        "Takes the Internal mark off (internal: false) as the last step of setting up the account, so the project with an account is not left Internal",
-        "Adds Riley Okafor as a contact"
+        "Creates the Larkspur Dental account with the larkspurdental.example domain before creating the project, without a project_id",
+        "Creates the project with that account's ID as account_id",
+        "Never marks the project Internal",
+        "Adds Riley Okafor as a contact on the project"
       ]
     },
     {

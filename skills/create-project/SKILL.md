@@ -70,20 +70,20 @@ Make these two clear in the proposal itself ("Reply 'add the suggestions' to inc
 
 Write in this order, because later items point at earlier ones:
 
-1. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs an account or the Internal mark:
-   - The account already exists: pass its ID as the account, from `list_accounts` or `search`.
-   - The work is the firm's own: pass `internal: true`.
-   - The account doesn't exist yet: pass `internal: true` for now. `save_account` and `save_contact` work on a project, so the project has to exist first. Step 2 takes the mark off.
-2. The account. When it doesn't exist yet, create it (`save_account`), then `set_project_account_role` with the role "client", then take the Internal mark off with `save_project` (the project's ID and internal off). Clear the mark last, after the role is set. If the account's domain already belongs to another account, that account exists: find its ID with `list_accounts` or `search` and use `set_project_account_role` with the role "client". Then add contacts (`save_contact`).
-3. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
-4. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
-5. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
-6. Tasks (`save_task`).
-7. Confirmed risks (`save_risk`).
-8. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.
-9. The source document (`add_project_document`), so the project keeps its origin.
+1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
+2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs one of these:
+   - The account from step 1, by its ID. This also records it as the project's client.
+   - `internal: true`: the work is the firm's own, with no account.
+3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.
+4. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
+5. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
+6. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
+7. Tasks (`save_task`).
+8. Confirmed risks (`save_risk`).
+9. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.
+10. The source document (`add_project_document`), so the project keeps its origin.
 
-If a write fails, stop and tell the person what was and wasn't created. Don't retry a refused write a different way. If the project was created Internal for a new account and its role isn't set yet, say the project is still marked Internal.
+If a write fails, stop and tell the person what was and wasn't created. Don't retry a refused write a different way. If the account was created but the project wasn't, say so: the account exists, and the next try uses its ID instead of creating another.
 
 ## 6. Report
 
@@ -98,7 +98,7 @@ Tell the person, by name and item key, what you created. Then list what's left:
 - Never invent dates, owners, phases or milestones. A one-paragraph source gives a small project. That's the right result.
 - Order and adjacency don't create a dependency. Only causal words do ("can't start until").
 - A job title isn't a project role and doesn't make someone a decision-maker.
-- A new project needs an account or the Internal mark. Ask which if the source doesn't say. For an account that doesn't exist yet, the mark is only there while you create it: set the role "client", then take the mark off. Never leave a project that has an account Internal, and never mark one Internal to skip the account.
+- A new project needs an account or the Internal mark. Ask which if the source doesn't say. For an account that doesn't exist yet, create the account first, then the project with its ID. Never mark a project Internal to skip the account.
 - Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong client.
 - Owners must be on the project team as admins or members. Add them to the team first.
 - A contact needs an email address. List contacts the source names without one as a gap, rather than guessing an address.
