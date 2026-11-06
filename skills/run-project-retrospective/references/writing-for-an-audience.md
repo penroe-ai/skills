@@ -37,6 +37,7 @@ Judge the body, not the title. One sensitive section makes the whole document se
 - Fewer, better items. An ordinary item doesn't earn space just by existing.
 - Short sentences, concrete nouns, active voice. Be specific: "Delivered homepage mockup v2", not "design work progressed".
 - Use people's given names. Add a family name only to tell two people apart.
+- Use a person's pronouns only when they stated them themselves. Otherwise use singular "they". A name doesn't tell you someone's pronouns, and neither does how someone else wrote about them. When "they" could mean more than one person, repeat the name. Quotes stay as written.
 - Ask one specific question when you need something, not several.
 
 ## Dates and times
