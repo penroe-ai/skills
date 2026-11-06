@@ -33,10 +33,10 @@ Use this when you build a project or change its structure. A well-formed project
 - Match a role to an existing one by meaning. "Project Mgr" is "Project Manager"; "Product Manager" is not. When nothing matches, leave it unset rather than picking the closest name.
 - Place a person on the client side or ours only on structural evidence: a signature block, a client heading, or an email domain.
 
-## The client
+## The account
 
-- An account needs the client's real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
-- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; find its ID with `list_accounts` or `search` and attach it to the project with `set_project_account_role` as the client role.
+- An account needs its real email domain. Use a domain only when it appears in an email address in the source. Never guess one from the company name, and never use a free email domain (gmail.com, outlook.com).
+- Search for the account and its contacts before creating them. A contact with the same email address is the same person. If creating the account fails because another account already owns the domain, the account exists; find its ID with `list_accounts` or `search` and attach it to the project with `set_project_account_role` with the role "client".
 - Name the sponsor and the single client approver as contacts when the source identifies them.
 
 ## Risks

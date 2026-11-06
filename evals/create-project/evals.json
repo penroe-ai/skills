@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Here's the signed SOW for Fernhill Coffee. Set the project up in Penroe.",
-      "expected_output": "Reads the whole SOW, checks for an existing project and account, drafts a proposal cited to the SOW grouped as Project / Plan / People / Client / Risks / Gaps, and waits for confirmation. After approval, writes the project team before assigning owners, then the plan, account and contacts, and reports items with no dates or owners and what's left to do in the app.",
+      "expected_output": "Reads the whole SOW, checks for an existing project and account, drafts a proposal cited to the SOW grouped as Project / Plan / People / Account / Risks / Gaps, and waits for confirmation. After approval, writes the project team before assigning owners, then the plan, account and contacts, and reports items with no dates or owners and what's left to do in the app.",
       "files": [
         "fernhill-sow.md"
       ],
@@ -53,19 +53,19 @@
     },
     {
       "id": 4,
-      "prompt": "New client: Larkspur Dental (larkspurdental.example) signed us for a 4-week website refresh. Riley Okafor (riley@larkspurdental.example) approves the work. We have no account for them in Penroe yet. Set it up.",
-      "expected_output": "Proposes the project and shows it is for a new client, then after approval creates the project marked Internal because the account tools need a project, creates the account on it, sets the client role, and only then takes the Internal mark off.",
+      "prompt": "New customer: Larkspur Dental (larkspurdental.example) signed us for a 4-week website refresh. Riley Okafor (riley@larkspurdental.example) approves the work. We have no account for them in Penroe yet. Set it up.",
+      "expected_output": "Proposes the project and shows it is for a new account, then after approval creates the project marked Internal because the account tools need a project, creates the account on it, sets the role \"client\", and only then takes the Internal mark off.",
       "files": [],
       "followups": [
         "Looks right. Go ahead."
       ],
       "assertions": [
-        "Shows a proposal that names Larkspur Dental as a new client account and waits for approval before writing",
+        "Shows a proposal that names Larkspur Dental as a new account and waits for approval before writing",
         "Does not call save_account before a project exists",
         "Creates the project with internal: true, not with an account_id",
         "Creates the Larkspur Dental account with the larkspurdental.example domain on that project",
-        "Calls set_project_account_role with client before taking the Internal mark off",
-        "Takes the Internal mark off (internal: false) as the last step of setting up the client, so the project is not left Internal",
+        "Calls set_project_account_role with the role \"client\" before taking the Internal mark off",
+        "Takes the Internal mark off (internal: false) as the last step of setting up the account, so the project with an account is not left Internal",
         "Adds Riley Okafor as a contact"
       ]
     },
@@ -86,14 +86,14 @@
     },
     {
       "id": 6,
-      "prompt": "Create a project for our own internal tooling cleanup: audit the scripts folder, remove dead scripts, document what's left. No client, just us, three weeks.",
-      "expected_output": "Treats the work as the firm's own, asks nothing about a client, and creates the project marked Internal with no account.",
+      "prompt": "Create a project for our own internal tooling cleanup: audit the scripts folder, remove dead scripts, document what's left. No account, just us, three weeks.",
+      "expected_output": "Treats the work as the firm's own, asks nothing about an account, and creates the project marked Internal with no account.",
       "files": [],
       "followups": [
         "Looks right. Go ahead."
       ],
       "assertions": [
-        "Does not ask for a client account or email domain",
+        "Does not ask for an account or email domain",
         "Creates the project with internal: true",
         "Does not create an account or call set_project_account_role",
         "Does not take the Internal mark off"

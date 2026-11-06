@@ -28,7 +28,7 @@ Read the whole source. Then ask, in one message, only for what the source doesn'
 
 - Which document is authoritative, if there are several (a signed statement of work outranks a proposal, which outranks notes)?
 - Was anything promised during the sale that isn't in the document?
-- Who is the client, and who on their side approves deliverables? Or is this the firm's own work, with no client?
+- Which account is this for, and who on their side approves deliverables? Or is this the firm's own work, with no account?
 - Which dates, if any, were promised to the client, and are any milestones tied to payment?
 - Should Penroe use a project template? Offer this when `list_project_templates` is in your tools. When it isn't and the person mentions a template, tell them once that the Project templates option adds it.
 
@@ -37,7 +37,7 @@ Don't ask about anything the source already answers. When the source is short, d
 ## 2. Check what already exists
 
 - `list_projects` with a search on the client or engagement name, so you don't create a duplicate.
-- `search` for the client's account and the contacts the source names.
+- `search` for the account and the contacts the source names.
 - `list_workspace_members` for the people on our side who will be on the project team or own work.
 - If the Groups and project roles option is on, `list_project_roles` so you can match member and contact roles by meaning. Without it, leave roles out and say so.
 
@@ -48,7 +48,7 @@ Show the person one proposal, grouped like this:
 - **Project:** title, a one-paragraph summary, and a description covering scope, explicit exclusions, assumptions and payment terms in the source's words.
 - **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and the work that gates them, phase dependencies, and tasks. Tasks are at a size someone can finish and report done.
 - **People:** the project team with their member type (admin, member or viewer) and, when roles are available, their role.
-- **Client:** whether the work is for a client or is the firm's own (ask when the source doesn't say), the account (name and email domain) and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the client approver when the source identifies them.
+- **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the client approver when the source identifies them.
 - **Risks:** proposed, not yet added. Assumptions, client dependencies and exclusions in a statement of work are the usual source.
 - **Gaps:** items with no dates, items with no owner, and anything you couldn't find, each said plainly.
 - **Suggested additions:** work good practice expects that the source doesn't state (project management, client reviews, integration and testing). Keep this separate and clearly labeled.
@@ -70,11 +70,11 @@ Make these two clear in the proposal itself ("Reply 'add the suggestions' to inc
 
 Write in this order, because later items point at earlier ones:
 
-1. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs a client account or the Internal mark:
-   - The client already has an account: pass its ID as the account, from `list_accounts` or `search`.
+1. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs an account or the Internal mark:
+   - The account already exists: pass its ID as the account, from `list_accounts` or `search`.
    - The work is the firm's own: pass `internal: true`.
-   - The client is new and has no account yet: pass `internal: true` for now. `save_account` and `save_contact` work on a project, so the project has to exist first. Step 2 takes the mark off.
-2. The client. For a new client, create the account (`save_account`), then `set_project_account_role` with the client role, then take the Internal mark off with `save_project` (the project's ID and internal off). Clear the mark last, after the client role is set. If the account's domain already belongs to another account, that account exists: find its ID with `list_accounts` or `search` and use `set_project_account_role` with client. Then add contacts (`save_contact`).
+   - The account doesn't exist yet: pass `internal: true` for now. `save_account` and `save_contact` work on a project, so the project has to exist first. Step 2 takes the mark off.
+2. The account. When it doesn't exist yet, create it (`save_account`), then `set_project_account_role` with the role "client", then take the Internal mark off with `save_project` (the project's ID and internal off). Clear the mark last, after the role is set. If the account's domain already belongs to another account, that account exists: find its ID with `list_accounts` or `search` and use `set_project_account_role` with the role "client". Then add contacts (`save_contact`).
 3. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
 4. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
 5. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
@@ -83,7 +83,7 @@ Write in this order, because later items point at earlier ones:
 8. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.
 9. The source document (`add_project_document`), so the project keeps its origin.
 
-If a write fails, stop and tell the person what was and wasn't created. Don't retry a refused write a different way. If the project was created Internal for a new client and the client role isn't set yet, say the project is still marked Internal.
+If a write fails, stop and tell the person what was and wasn't created. Don't retry a refused write a different way. If the project was created Internal for a new account and its role isn't set yet, say the project is still marked Internal.
 
 ## 6. Report
 
@@ -98,7 +98,7 @@ Tell the person, by name and item key, what you created. Then list what's left:
 - Never invent dates, owners, phases or milestones. A one-paragraph source gives a small project. That's the right result.
 - Order and adjacency don't create a dependency. Only causal words do ("can't start until").
 - A job title isn't a project role and doesn't make someone a decision-maker.
-- A new project needs a client account or the Internal mark. Ask which if the source doesn't say. For a new client the mark is only there while you create the account: set the client role, then take the mark off. Never leave a client project Internal, and never mark one Internal to skip the account.
+- A new project needs an account or the Internal mark. Ask which if the source doesn't say. For an account that doesn't exist yet, the mark is only there while you create it: set the role "client", then take the mark off. Never leave a project that has an account Internal, and never mark one Internal to skip the account.
 - Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong client.
 - Owners must be on the project team as admins or members. Add them to the team first.
 - A contact needs an email address. List contacts the source names without one as a gap, rather than guessing an address.
