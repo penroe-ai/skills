@@ -26,7 +26,7 @@ Phases, deliverables, milestones and projects carry two dates.
 
 Tasks have one date, their due date.
 
-"It's running late" is not a date change. When there's a concrete new expected date, it's a forecast note on the item (`post_item_update`). When there isn't ("maybe a week"), it's a risk or a comment. Change a working date only when someone re-planned the work. Change a Committed date only when the person tells you the client agreed to a new one, and say plainly that this changes what the client was promised.
+"It's running late" is not a date change. When there's a concrete new expected date, it's a forecast note on the item (`post_item_update`). When there isn't ("maybe a week"), it's a risk or an update on the item (`post_status_update`). Change a working date only when someone re-planned the work. Change a Committed date only when the person tells you the client agreed to a new one, and say plainly that this changes what the client was promised.
 
 Through this connection, a Committed date can be set only for a project's or phase's end, a milestone's target or a deliverable's due date (`apply_bulk_change` with the Committed date basis), and not cleared. Committed start dates are set in the Penroe app.
 

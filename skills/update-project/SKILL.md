@@ -45,10 +45,10 @@ Group the proposal by kind:
 For each item, cite the source with a short quote. Then:
 
 - Propose only what the source states. Leave alone items it doesn't mention. Raise "you didn't mention X" only when the source covered nearly everything else of that kind.
-- Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or a comment. A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
+- Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or an update on the item (`post_status_update`). A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
 - Move a risk to Happening or Closed, or reopen it, with `save_risk`, giving the closed reason when closing and the person's why in its reason. Change its impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
 - Say what an account is to a project with `set_project_account_role`: the role "client" for the account the work is for, "partner", or "observed". It adds the account to the project if it isn't on it. Set "client" or "partner" only when the person said so. A suggestion from an email is not that.
-- Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in a comment (`add_comment`) when it doesn't.
+- Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in an update on the item (`post_status_update`) when it doesn't.
 
 ## 4. Preview and confirm
 
@@ -65,7 +65,7 @@ For each item, cite the source with a short quote. Then:
 
 ## Gotchas
 
-- Read each tool's input schema before calling it; names differ from tool to tool. `get_project` takes the project's id (or exact title), not a project id field. `preview_schedule_change` takes the entity type, the item's id and the new date. `add_comment` names its item by that item's own id field (a task id, risk id or milestone id) and takes markdown content.
+- Read each tool's input schema before calling it; names differ from tool to tool. `get_project` takes the project's id (or exact title), not a project id field. `preview_schedule_change` takes the entity type, the item's id and the new date. `post_status_update` takes the project, the update as markdown, and, for an update on an item, the item's kind and its id or key. `post_item_update` names each item by that item's own id field (a task id, risk id or milestone id).
 
 - "It's running late" is a risk or a forecast note, never a quiet change to the plan.
 - A risk closes on evidence that its conditions are gone, never because it went quiet. Partly mitigated isn't resolved.

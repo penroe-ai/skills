@@ -24,4 +24,4 @@ Tell the person the change wasn't made and that it's controlled by a permission 
 
 ## Penroe can't do it at all
 
-Some things aren't possible through the connection, such as sending email or messages on the person's behalf. Say so in one line, and point to the closest thing Penroe can do (post a status update, attach a document, add a comment).
+Some things aren't possible through the connection, such as sending email or messages on the person's behalf. Say so in one line, and point to the closest thing Penroe can do (post an update on the project or an item, attach a document).
