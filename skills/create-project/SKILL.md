@@ -68,6 +68,8 @@ Make these two clear in the proposal itself ("Reply 'add the suggestions' to inc
 
 ## 5. Write it to Penroe
 
+A full setup takes many tool calls, and the person may see nothing else while they run, so keep them posted in plain text. Before the first write, say what you're about to create, with rough counts of each kind (for example, "4 phases, 9 deliverables, 3 milestones, about 40 tasks and 5 risks"). As each numbered step below finishes, give one short line on what was just made. Don't wait until the end to say anything.
+
 Write in this order, because later items point at earlier ones:
 
 1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's, and the person creating it owns it. Leave the owner unset unless the person names someone else: naming someone else is refused when it would leave the person unable to see the account, unless they are a workspace admin. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
@@ -87,7 +89,7 @@ If a write fails, stop and tell the person what was and wasn't created. Don't re
 
 ## 6. Report
 
-Tell the person, by name and item key, what you created. Then list what's left:
+Tell the person, by name and item key, what you created, and anything from the proposal you skipped or couldn't create. Then list what's left:
 
 - items with no dates and items with no owner, and offer to fill them in now
 - what they still set in the Penroe app: activity rules beyond the defaults, a Slack channel, and groups when you couldn't set them
