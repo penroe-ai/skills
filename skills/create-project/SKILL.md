@@ -79,7 +79,7 @@ Write in this order, because later items point at earlier ones:
 3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.
 4. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
 5. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
-6. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
+6. What each milestone depends on, and which phases wait on others (`add_dependency`). A milestone depends on the phases, deliverables or tasks it needs; a phase depends on the phase it can't start before.
 7. Tasks (`save_task`).
 8. Confirmed risks (`save_risk`).
 9. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.

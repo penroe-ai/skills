@@ -39,7 +39,9 @@ Penroe works out whether an item is late: **overdue** (its own date has passed) 
 - A **risk** is something that could happen and would hurt the plan. An **issue** is something already happening. In Penroe, a risk that comes true moves to Happening. It isn't deleted.
 - A risk is Watching (it might happen), Happening (it has happened) or Closed. A closed risk says why: it didn't happen, it was handled, it was never a risk, or it was accepted and the team is living with it. Move a risk between these with `save_risk`: give the stage, the closed reason when closing, and the person's why in its reason. Change a risk's impact or likelihood with `update_risk_assessment`, and give the reason in its feedback.
 - `list_risks` and `get_risk` also show an older status (open, realized, resolved, accepted or dismissed). Use it to filter the list, not to change a risk.
-- A **blocker** is a risk that is stopping named work right now, which the work's owner can't clear alone. A blocker names who can clear it and what is being asked of them (`set_blocker_call`).
+- Work **depends on** other work in the project, or on an **external dependency**: something outside the project's work that it needs, such as client data access. An external dependency is Met or Not met. Seen from the other side, the work it waits for is **needed for** it. Read both with `list_dependencies`; add and remove one with `add_dependency` and `remove_dependency`.
+- **Blocked** is not a task status. Work is blocked when one of the things it depends on is marked as blocking it. Mark it with `mark_blocked`, which also takes an external dependency to create or "I don't know why", and clear it with `mark_not_blocked`. When an external dependency is delivered, mark it with `mark_dependency_met`, which clears every block it caused.
+- A **blocker** is something stopping named work right now, which the work's owner can't clear alone. A risk can arise from it, but the blocker is the dependency, not the risk.
 
 ## People
 
