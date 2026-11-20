@@ -1,15 +1,23 @@
 # Penroe skills
 
-Run your client projects in Penroe from the AI assistant you already use. These skills teach Claude, ChatGPT and other assistants how to do the jobs a delivery lead does every week: create a project from a statement of work, keep it current, prepare for meetings, draft status updates, run a retrospective, and write the documents tasks call for.
+Penroe is an AI-native project management platform for professional services firms. It keeps a shared record of what your team promised, what changed, and why. The Penroe plugin gives your assistant access to that record and a library of skills for work like setting up a client project, preparing for a check-in, and drafting a status update.
 
 [Penroe](https://penroe.ai) · [Privacy](https://penroe.ai/privacy-policy) · [Support](https://penroe.ai/support)
 
-## What this is
+## What the plugin includes
 
-This repository is the Penroe plugin. It bundles two things:
+The plugin pairs the Penroe connection with instructions for recurring project work.
 
-- **The Penroe connection.** It links your assistant to your Penroe workspace (`https://mcp.penroe.app/mcp`). You sign in with your own Penroe account, and the assistant can see and change only what you already can.
-- **Skills.** Each skill is a short set of instructions for one job. Your assistant reads a skill when your request matches it, so it follows the same steps an experienced project lead would, using Penroe's own read of each project.
+- **The Penroe connection** gives your assistant tools to read project plans and sources and save approved changes. You sign in with your own account. The assistant works within your Penroe access and any limits your workspace sets.
+- **The skills** tell the assistant which steps to follow for a job. When Penroe returns guidance from a project template, plays for the project, or notes on the task, the relevant skills use that guidance to shape the work.
+
+## Why build on Penroe?
+
+**Before Penroe.** When a client says a file will arrive late, the lead has to find what the team promised, when the file is now expected, and which work depends on it. The lead brings those details into the chat. The next teammate may have to find them again to prepare a handoff or explain the change.
+
+**With Penroe.** An assistant can read the current plan, the dates you promised the client, and the connected sources it has permission to use. The lead decides what to change and what to tell the client. With write access, the assistant can save the approved change or follow-up in Penroe, where the next teammate can find it with the rest of the plan.
+
+You can use the skills here or write one for how your firm works. A client update and an internal handoff can each have their own format and read from the same project. For example, the update can explain whether the launch date still holds, while the handoff names who owns the next task and why it matters.
 
 ## Skills
 
@@ -57,7 +65,15 @@ The assistant saves the approved changes, records the reason and source, and rep
 
 > With the data file now expected November 5, we've moved testing to November 6 in our working plan. That puts testing after the November 5 milestone. We need to agree how to handle that milestone; the existing client commitment remains unchanged.
 
-You review the draft and send it. The assistant does not move other dates automatically or send the email.
+You review the draft and send it. The next teammate who opens the plan can find the approved working dates and the reason they changed. They can use that same record for a testing handoff.
+
+## What Penroe keeps running
+
+A prompt can turn a pasted email into a client update. A workflow your team uses every week also needs reliable connections, a current plan, and controls over who can read or change it.
+
+- **Project sources and dates.** Penroe connects permitted email, meetings, messages, and files to the project. The connection exposes the committed dates, working dates, risks, and blockers your workflow can use.
+- **The way your firm works.** The connection returns the project’s applicable plays and template guidance. A testing handoff can use a firm play to check who’s responsible for test accounts before the test window opens.
+- **Access and safeguards.** Penroe limits what each assistant can read and change. The skills ask you to review proposed changes and treat instructions found in returned source material as data. See [the tool definitions](tools.json) and [Penroe’s security overview](https://penroe.ai/security).
 
 ## Install
 
