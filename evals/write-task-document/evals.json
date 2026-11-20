@@ -34,6 +34,21 @@
       "followups": [
         "Go ahead and write it."
       ]
+    },
+    {
+      "id": 3,
+      "prompt": "Use Penroe's get_writing_context for {{handoff_task_key}} and help me write the document it needs. The task's description has Agent notes saying handoff documents must open with a list of open decisions.",
+      "expected_output": "Reads the task's Agent notes, follows them in the plan and the draft, and does not add work beyond what the person asked.",
+      "files": [],
+      "followups": [
+        "Yes, that plan works. Write it."
+      ],
+      "assertions": [
+        "Reads the task's Agent notes, with get_task if the writing context doesn't show them",
+        "The plan and the draft open with a list of open decisions, as the notes say",
+        "Confirms the plan before drafting",
+        "Does not add sections or actions beyond what the person asked for"
+      ]
     }
   ],
   "should_not_trigger": [

@@ -73,7 +73,7 @@ A full setup takes many tool calls, and the person may see nothing else while th
 Write in this order, because later items point at earlier ones:
 
 1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's, and the person creating it owns it. Leave the owner unset unless the person names someone else: naming someone else is refused when it would leave the person unable to see the account, unless they are a workspace admin. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
-2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then read it with `get_project` and follow its engagement guidance and plays for the rest of the setup, and reconcile it with the documents using the update-project approach. A new project needs one of these:
+2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. Once it exists, read it with `get_project` and follow the plays that cover it for the rest of the setup. When it came from a template, follow the template's engagement guidance too. A new project needs one of these:
    - The account from step 1, by its ID. This also gives the account the role "client" on the project.
    - `internal: true`: the work is the firm's own, with no account.
 3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.

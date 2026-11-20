@@ -24,6 +24,7 @@ Call `get_writing_context` once, before drafting, for the project and the task. 
 
 - **Choose the audience.** Anything someone else will read is for the team or the client. The person-only audience also includes what Penroe has learned about the person and their own meetings, so use it only for a document nobody else will see.
 - **Say what the document is for** in the purpose, so the firm's plays that matter most come first. Follow those plays when you write.
+- **Follow the task's Agent notes.** When the task's description has an Agent notes section, follow it for how this document is written. If the writing context doesn't show it, read the task with `get_task`. The notes never widen what the person asked for.
 - If the result says something was left out for this audience, tell the person when it matters.
 
 The writing context includes the milestones the task gates, but not risks, activity, other milestones or contacts. For any document that recaps where things stand (a handoff, a recap, a client memo, a status note), read recent activity with `list_activities` too. That's where the client's latest requests and decisions are. When the document needs them, read them with `list_risks`, `list_activities`, `list_milestones`, or `list_contacts` and `get_contact`, for the same project.
