@@ -17,7 +17,7 @@ Use this when you build a project or change its structure. A well-formed project
 - The plan should cover all the scope the source describes, and nothing outside it. Put explicit exclusions in the description.
 - Size tasks so someone can finish one and report it done: roughly a day to two weeks of work. Group smaller steps into one task.
 - Phases need a start and an end date. Milestones need a target date. If the source doesn't give them, the item can't be a phase or milestone yet. Keep it as a deliverable or task, or ask for the dates.
-- Attach gating work to a milestone only when the source says what has to be done to reach it.
+- Make a milestone depend on work only when the source says what has to be done to reach it.
 - Add a phase dependency only for explicit causal language ("design can't start until research is signed off"). Order, adjacency or overlapping dates don't create one.
 - A task's phase must match its deliverable's phase.
 

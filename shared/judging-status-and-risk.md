@@ -21,7 +21,7 @@ A few rules keep the reading honest:
 - Starting is not finishing. "Should be done by Friday" is not done.
 - Asking for material is not receiving it.
 - Work shared by several people, or work that repeats, is done when the last part is done.
-- A milestone is met when all of its gating work is met. A count of finished tasks isn't progress toward it; name what is still outstanding.
+- A milestone is met when everything it depends on is met. A count of finished tasks isn't progress toward it; name what is still outstanding.
 - If completion is ambiguous, leave the item open and say why.
 - Plain counts are fine ("4 of 9 tasks are open"). Never give a percent complete.
 
@@ -43,7 +43,7 @@ A blocker passes three tests:
 2. The owner of the stuck work can't clear it alone.
 3. Someone specific can clear it, and you can say what to ask them for.
 
-A plain overdue task is not a blocker. Neither is work the person has said is out of scope. Group blockers by what the work is waiting on, not by their consequences.
+A plain overdue task is not a blocker. Neither is work the person has said is out of scope. Group blockers by what the work is waiting on, not by their consequences. Read what work depends on, and what it is blocked by, with `list_dependencies`.
 
 ## Recency
 

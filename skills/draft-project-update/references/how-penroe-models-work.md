@@ -10,7 +10,7 @@ A project's plan has four kinds of item. They are different things, not levels o
 
 - **Phase.** A span of time with a start and an end date. Both dates are required: an interval with one end is not a phase.
 - **Deliverable.** Something the project hands over, such as a document, a build or a decision. It moves through review and acceptance. A deliverable sits in at most one phase, or directly under the project.
-- **Milestone.** A single point in time the plan steers toward, with a target date. It is met when the work that gates it is done, not when a share of the work is done. Gating work can be a phase, a deliverable or a task.
+- **Milestone.** A single point in time the plan steers toward, with a target date. It is met when everything it depends on is done, not when a share of the work is done. A milestone can depend on a phase, a deliverable or a task.
 - **Task.** A unit of work with one owner and one due date. A task can sit in a phase, a deliverable, both, or neither. When it sits in both, the task's phase must be the deliverable's phase.
 
 Phase dependencies ("phase B can't start until phase A ends") are advisory links between phases. They exist only where a person or a document says one thing depends on another.

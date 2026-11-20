@@ -46,7 +46,7 @@ Don't ask about anything the source already answers. When the source is short, d
 Show the person one proposal, grouped like this:
 
 - **Project:** title, a one-paragraph summary, and a description covering scope, explicit exclusions, assumptions and payment terms in the source's words.
-- **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and the work that gates them, phase dependencies, and tasks. Tasks are at a size someone can finish and report done.
+- **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and what each depends on, which phases wait on others, and tasks. Tasks are at a size someone can finish and report done.
 - **People:** the project team with their member type (admin, member or viewer) and, when roles are available, their role.
 - **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the approver on the account's side when the source identifies them.
 - **Risks:** proposed, not yet added. Assumptions, dependencies on the account and exclusions in a statement of work are the usual source.
