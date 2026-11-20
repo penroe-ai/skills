@@ -46,7 +46,7 @@ Don't ask about anything the source already answers. When the source is short, d
 Show the person one proposal, grouped like this:
 
 - **Project:** title, a one-paragraph summary, and a description covering scope, explicit exclusions, assumptions and payment terms in the source's words.
-- **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and the work that gates them, phase dependencies, and tasks. Tasks are at a size someone can finish and report done.
+- **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and what each depends on, which phases wait on others, and tasks. Tasks are at a size someone can finish and report done.
 - **People:** the project team with their member type (admin, member or viewer) and, when roles are available, their role.
 - **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the approver on the account's side when the source identifies them.
 - **Risks:** proposed, not yet added. Assumptions, dependencies on the account and exclusions in a statement of work are the usual source.
@@ -73,13 +73,13 @@ A full setup takes many tool calls, and the person may see nothing else while th
 Write in this order, because later items point at earlier ones:
 
 1. The account, when the work is for one. If it already exists, use its ID from `list_accounts` or `search`. If it doesn't exist yet, create it with `save_account` and no project; the result's ID is the account's, and the person creating it owns it. Leave the owner unset unless the person names someone else: naming someone else is refused when it would leave the person unable to see the account, unless they are a workspace admin. If creating it fails because another account already owns the domain, that account exists: find its ID with `list_accounts` or `search`.
-2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. A new project needs one of these:
+2. The project (`save_project`). If a template was chosen, `create_project_from_template` instead, then reconcile it with the documents using the update-project approach. Once it exists, read it with `get_project` and follow the plays that cover it for the rest of the setup. When it came from a template, follow the template's engagement guidance too. A new project needs one of these:
    - The account from step 1, by its ID. This also gives the account the role "client" on the project.
    - `internal: true`: the work is the firm's own, with no account.
 3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.
 4. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
 5. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
-6. Gating work (`add_gating_work`) and phase dependencies (`save_phase_dependency`).
+6. What each milestone depends on, and which phases wait on others (`add_dependency`). A milestone depends on the phases, deliverables or tasks it needs; a phase depends on the phase it can't start before.
 7. Tasks (`save_task`).
 8. Confirmed risks (`save_risk`).
 9. Confirmed Committed dates (`apply_bulk_change` with the Committed date basis). This covers a project's or phase's end, a milestone's target and a deliverable's due date. Committed start dates go on the "left in the app" list.
@@ -94,6 +94,7 @@ Tell the person, by name and item key, what you created, and anything from the p
 - items with no dates and items with no owner, and offer to fill them in now
 - what they still set in the Penroe app: activity rules beyond the defaults, a Slack channel, and groups when you couldn't set them
 - that the attached source document is visible only to them until they share it
+- when the template carries engagement guidance, what it asks for that you didn't do here (setting up the team's own tools, for example), so the person can do it or ask you to
 
 ## Gotchas
 

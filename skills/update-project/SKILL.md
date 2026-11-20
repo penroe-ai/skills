@@ -29,7 +29,7 @@ Ask, if the source doesn't make it clear:
 
 ## 2. Read the project as it stands
 
-- `get_project` with the snapshot detail: status and its reason, blockers, phases with their slip, milestones, deliverables needing attention, task counts and live risks. Use it to judge lateness. Don't work lateness out from dates.
+- `get_project` with the snapshot detail: status and its reason, blockers, phases with their slip, milestones, deliverables needing attention, task counts and live risks. Use it to judge lateness. Don't work lateness out from dates. It also returns the project's engagement guidance and the plays that cover it: follow them for how the changes are made.
 - Then the list tools for the items the source touches (`list_tasks`, `list_deliverables`, `list_phases`, `list_milestones`, `list_risks`, `list_contacts`).
 - When the source is a Penroe email, meeting or recording, read it with `get_activity` or `get_resource`, and note its subject or title and date to cite.
 
@@ -47,6 +47,7 @@ For each item, cite the source with a short quote. Then:
 - Propose only what the source states. Leave alone items it doesn't mention. Raise "you didn't mention X" only when the source covered nearly everything else of that kind.
 - Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or an update on the item (`post_status_update`). A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
 - Move a risk to Happening or Closed, or reopen it, with `save_risk`, giving the closed reason when closing and the person's why in its reason. Change its impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
+- Record that work is stuck with `mark_blocked`, naming what it is blocked by, and clear it with `mark_not_blocked`. When something outside the project that work was waiting on arrives, use `mark_dependency_met`. Add or remove what work depends on with `add_dependency` and `remove_dependency`. Propose these like any other change, and only when the source states them.
 - Say what an account is to a project with `set_project_account_role`: the role "client" for the account the work is for, "partner", or "observed". It adds the account to the project if it isn't on it. Set "client" or "partner" only when the person said so. A suggestion from an email is not that.
 - Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in an update on the item (`post_status_update`) when it doesn't.
 
