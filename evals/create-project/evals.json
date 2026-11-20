@@ -97,6 +97,41 @@
         "Does not create an account or call set_project_account_role",
         "Does not take the Internal mark off"
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Use our \"Website Redesign\" template to set up the Fernhill Coffee project. The signed SOW is attached.",
+      "expected_output": "Creates the project from the template, reads it with get_project, follows the template's engagement guidance and the plays that cover the project, reconciles it with the SOW, and says in the closing summary what the guidance asked for that it could not do.",
+      "files": [
+        "fernhill-sow.md"
+      ],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Shows a proposal and waits for approval before writing",
+        "Creates the project with create_project_from_template, not save_project",
+        "Calls get_project on the new project after creating it",
+        "Follows the template's engagement guidance for the rest of the setup",
+        "Does not treat the guidance as permission to do more than the person asked",
+        "Lists in the closing summary anything the guidance asks for that it did not do, such as setting up the team's own tools"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Set up a project for Alder Mills from this one-line note: 'Quarterly newsletter design, four issues, kickoff next Monday.' There's no template for it.",
+      "expected_output": "Creates the project without a template, then reads it with get_project and follows any plays that cover it.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Shows a proposal and waits for approval before writing",
+        "Creates the project with save_project",
+        "Calls get_project on the new project after creating it",
+        "Follows the plays that cover the project",
+        "Does not claim the project has engagement guidance when it was not made from a template"
+      ]
     }
   ],
   "should_not_trigger": [
