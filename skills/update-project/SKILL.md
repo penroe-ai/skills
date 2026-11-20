@@ -29,7 +29,7 @@ Ask, if the source doesn't make it clear:
 
 ## 2. Read the project as it stands
 
-- `get_project` with the snapshot detail: status and its reason, blockers, phases with their slip, milestones, deliverables needing attention, task counts and live risks. Use it to judge lateness. Don't work lateness out from dates.
+- `get_project` with the snapshot detail: status and its reason, blockers, phases with their slip, milestones, deliverables needing attention, task counts and live risks. Use it to judge lateness. Don't work lateness out from dates. It also returns the project's engagement guidance and the plays that cover it: follow them for how the changes are made.
 - Then the list tools for the items the source touches (`list_tasks`, `list_deliverables`, `list_phases`, `list_milestones`, `list_risks`, `list_contacts`).
 - When the source is a Penroe email, meeting or recording, read it with `get_activity` or `get_resource`, and note its subject or title and date to cite.
 
