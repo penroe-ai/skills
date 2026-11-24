@@ -37,6 +37,18 @@
         "Offers a recurring recipe or schedule that drafts rather than posts on its own",
         "Does not post a status update"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Just got off a call with Northwind. They have a new procurement lead, Dana Reyes, and they were happy with the launch. Can you put that in Penroe?",
+      "expected_output": "Treats this as news about the client account rather than one project's status. Finds the Northwind account, reads its existing updates with list_status_updates and account_id, drafts an update that names the account, waits for confirmation, then posts it with post_status_update and account_id, with no project, item or source.",
+      "files": [],
+      "assertions": [
+        "Posts on the account, not on a project",
+        "Reads the account's existing updates before drafting",
+        "Shows the draft with the account's name and does not post without approval",
+        "Passes account_id and no project_id, item or source when posting"
+      ]
     }
   ],
   "should_not_trigger": [
