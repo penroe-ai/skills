@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Draft this week's client update for the Northwind website redesign.",
-      "expected_output": "Uses get_writing_context with the client audience and the snapshot, leads with the status and why, writes risks as Risk / Impact / Recommendation, keeps internal deliberation out but the honest status in, shows the draft, and warns that a posted update can't be edited before posting.",
+      "expected_output": "Uses get_writing_context with the client audience and the snapshot, leads with the status and why, writes risks as Risk / Impact / Recommendation, keeps internal deliberation out but the honest status in, shows the draft, and warns before posting that a posted update can be edited only for an hour.",
       "files": [],
       "assertions": [
         "Calls get_writing_context with the client audience",
@@ -12,7 +12,7 @@
         "Mentions the content timing risk honestly with a recommendation",
         "Leaves out sentiment readings and internal deliberation",
         "Shows a draft and does not post without approval",
-        "Says a posted update can't be edited"
+        "Says a posted update can be edited only within the hour of posting"
       ]
     },
     {

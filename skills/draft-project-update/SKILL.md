@@ -57,7 +57,7 @@ Cite item keys and name sources inline. Match the length to the audience: leader
 
 - Show the full draft and ask the person to confirm or edit it.
 - If they disagree with Penroe's status, show both readings and let them choose the wording. Never quietly re-derive it.
-- Before posting, tell them that a posted status update can't be edited. A correction is a new update.
+- Before posting, tell them they can change the words of a posted project update with `edit_status_update` for an hour after posting it. Editing doesn't undo anything Penroe already changed because of it, and after the hour a correction is a new update. An update about an account can't be edited from here.
 
 ## 5. Post or save
 
