@@ -7,7 +7,7 @@ description: Creates a complete Penroe project from a statement of work, proposa
 
 Turn the source the person gives you into a Penroe project the team can run from. The result says only what the source says, shows its gaps plainly, and is confirmed before anything is written.
 
-The tools named here come from the Penroe connector. Read [well-formed-project.md](references/well-formed-project.md) before you draft, and [how-penroe-models-work.md](references/how-penroe-models-work.md) if a term below is unfamiliar.
+The tools named here come from the Penroe connector. Read [well-formed-project.md](references/well-formed-project.md) before you draft, [sharing-rules.md](references/sharing-rules.md) before you propose sharing rules, and [how-penroe-models-work.md](references/how-penroe-models-work.md) if a term below is unfamiliar.
 
 ## Checklist
 
@@ -49,6 +49,7 @@ Show the person one proposal, grouped like this:
 - **Plan:** phases with start and end dates, deliverables (in their phase), milestones with target dates and what each depends on, which phases wait on others, and tasks. Tasks are at a size someone can finish and report done.
 - **People:** the project team with their member type (admin, member or viewer) and, when roles are available, their role.
 - **Account:** whether the project is for an account or is the firm's own work (ask when the source doesn't say), the account's name and email domain and whether it already exists in Penroe, and contacts with title and role on this engagement. Name the sponsor and the approver on the account's side when the source identifies them.
+- **Sharing:** for a project with an account, recommend one sharing rule that brings in email and meetings with anyone at the account, from the person's own mailbox, including the last 90 days. Say the project keeps its default rule for what everyone can already see. Leave this out for the firm's own work.
 - **Risks:** proposed, not yet added. Assumptions, dependencies on the account and exclusions in a statement of work are the usual source.
 - **Gaps:** items with no dates, items with no owner, and anything you couldn't find, each said plainly.
 - **Suggested additions:** work good practice expects that the source doesn't state (project management, client reviews, integration and testing). Keep this separate and clearly labeled.
@@ -59,12 +60,13 @@ For every item, keep a short quote from the source or say where it came from. Sa
 
 Ask the person to confirm or correct the proposal. Take their corrections, then show only what changed.
 
-A plain go-ahead ("looks right, go ahead") approves everything the proposal showed as part of the project, including the project team and the proposed risks. Carry it out in full rather than asking again. Two things need their own explicit yes, because they reach other people:
+A plain go-ahead ("looks right, go ahead") approves everything the proposal showed as part of the project, including the project team and the proposed risks. Carry it out in full rather than asking again. Three things need their own explicit yes, because they reach other people:
 
 - **Committed dates:** only dates the source presents as promised to the client, each one named in your question.
 - **Suggested additions:** the work you labeled as not in the source.
+- **The sharing rule:** it changes what the project team sees from the person's mail.
 
-Make these two clear in the proposal itself ("Reply 'add the suggestions' to include them"), so one reply can answer everything.
+Make these three clear in the proposal itself ("Reply 'add the suggestions' to include them", "Reply 'add the sharing rule' to bring in mail with the client"), so one reply can answer everything.
 
 ## 5. Write it to Penroe
 
@@ -77,6 +79,7 @@ Write in this order, because later items point at earlier ones:
    - The account from step 1, by its ID. This also gives the account the role "client" on the project.
    - `internal: true`: the work is the firm's own, with no account.
 3. Contacts (`save_contact`), with the project's ID and the account's ID, so they're on the project.
+   Then, when the person said yes to it, the sharing rule: `list_sharing_rules` to see the project's rules and confirm the parity rule is there, then `save_sharing_rule` with `condition: participants_at_least` and the account as its one subject. Keep the defaults (your own mail, the last 90 days). Tell the person how many earlier items were added and how many are still waiting.
 4. The project team (`save_project_member`), so owners can be assigned. Owners must be admins or members, not viewers. Then roles (`assign_project_role`) when the option is on.
 5. Phases (`save_phase`), then deliverables (`save_deliverable`), then milestones (`save_milestone`).
 6. What each milestone depends on, and which phases wait on others (`add_dependency`). A milestone depends on the phases, deliverables or tasks it needs; a phase depends on the phase it can't start before.
@@ -92,7 +95,8 @@ If a write fails, stop and tell the person what was and wasn't created. Don't re
 Tell the person, by name and item key, what you created, and anything from the proposal you skipped or couldn't create. Then list what's left:
 
 - items with no dates and items with no owner, and offer to fill them in now
-- what they still set in the Penroe app: activity rules beyond the defaults, a Slack channel, and groups when you couldn't set them
+- what they still set in the Penroe app: a Slack channel, and groups when you couldn't set them
+- the sharing rule, if you added it: it reads only their own mail, and teammates can add their own or the person can widen it to the team in Penroe
 - that the attached source document is visible only to them until they share it
 - when the template carries engagement guidance, what it asks for that you didn't do here (setting up the team's own tools, for example), so the person can do it or ask you to
 
@@ -101,6 +105,7 @@ Tell the person, by name and item key, what you created, and anything from the p
 - Never invent dates, owners, phases or milestones. A one-paragraph source gives a small project. That's the right result.
 - Order and adjacency don't create a dependency. Only causal words do ("can't start until").
 - A job title isn't a project role and doesn't make someone a decision-maker.
+- Never turn off or replace the project's parity sharing rule during setup. It is the default every project keeps.
 - A new project needs an account or the Internal mark. Ask which if the source doesn't say. For an account that doesn't exist yet, create the account first, then the project with its ID. Never mark a project Internal to skip the account.
 - Use an email domain only when it appears in an email address in the source, and never a free one like gmail.com. A guessed domain attaches the project to the wrong account.
 - Owners must be on the project team as admins or members. Add them to the team first.

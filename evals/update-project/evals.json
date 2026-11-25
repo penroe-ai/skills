@@ -59,6 +59,23 @@
         "Drafts a client update that gives the new testing date, raises the milestone decision and says the existing commitment is unchanged, and does not claim to have sent it",
         "Makes no more than two failed tool calls from wrong parameter names"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "On the Northwind catalog migration project, delete the default sharing rule. I only want the client rule.",
+      "expected_output": "Reads the project's sharing rules, explains that the parity rule brings in what every project member can already open and recommends keeping it alongside the client rule, and asks the person to confirm before turning it off. Turns it off only after a second, explicit yes, passing the confirmation to delete_sharing_rule, after a preview.",
+      "files": [],
+      "followups": [
+        "I understand, but please turn it off anyway."
+      ],
+      "assertions": [
+        "Calls list_sharing_rules before changing anything",
+        "Explains what the parity rule does and recommends keeping it before deleting",
+        "Does not call delete_sharing_rule on the first request",
+        "Previews the deletion before deleting",
+        "After the explicit confirmation, calls delete_sharing_rule with confirm_parity_deletion set to true",
+        "Does not delete the client account rule"
+      ]
     }
   ],
   "should_not_trigger": [

@@ -48,6 +48,7 @@ For each item, cite the source with a short quote. Then:
 - Use the right tool for a slip. "This will land on the 14th instead" with no re-plan is a forecast note on the item (`post_item_update`), not a date change. A vague slip with no date ("maybe a week") is a risk or an update on the item (`post_status_update`). A real re-plan changes the working date (`save_task`, `save_deliverable`, `save_phase` or `save_milestone`).
 - Move a risk to Happening or Closed, or reopen it, with `save_risk`, giving the closed reason when closing and the person's why in its reason. Change its impact or likelihood with `update_risk_assessment`, giving the reason in its feedback.
 - Record that work is stuck with `mark_blocked`, naming what it is blocked by, and clear it with `mark_not_blocked`. When something outside the project that work was waiting on arrives, use `mark_dependency_met`. Add or remove what work depends on with `add_dependency` and `remove_dependency`. Propose these like any other change, and only when the source states them.
+- When the person wants to change what comes into the project from email and meetings, follow [sharing-rules.md](references/sharing-rules.md): read the rules with `list_sharing_rules`, and change them with `save_sharing_rule` or `delete_sharing_rule`. When a project gains a client account and has no rule for it, offer the one account rule.
 - Say what an account is to a project with `set_project_account_role`: the role "client" for the account the work is for, "partner", or "observed". It adds the account to the project if it isn't on it. Set "client" or "partner" only when the person said so. A suggestion from an email is not that.
 - Record why. Put the source, the reason and who approved it in the change's reason when the tool takes one, or in an update on the item (`post_status_update`) when it doesn't.
 
@@ -55,7 +56,7 @@ For each item, cite the source with a short quote. Then:
 
 - Before changing the working date of a task, deliverable, phase or milestone, call `preview_schedule_change` and show what the new date would leave in conflict. Dates don't move each other in Penroe, so the person decides what else to move.
 - Before moving a milestone, ask whether it's contractual or tied to a payment.
-- These each need their own clear yes: closing or removing items, changing an owner, changing the project team, and changing a Committed date. So does any change where Penroe's current value already differs from what the source assumed, because someone may have changed it since.
+- These each need their own clear yes: closing or removing items, changing an owner, changing the project team, adding, changing or turning off a sharing rule, and changing a Committed date. So does any change where Penroe's current value already differs from what the source assumed, because someone may have changed it since.
 - A Committed date changes only when the person says the client agreed. Say plainly that this changes what the client was promised.
 - Two different tools change dates. The save tools change an item's working date. `apply_bulk_change` with the Committed date basis changes its Committed date (a phase's or project's end, a milestone's target, a deliverable's due date). When the client agreed to a new date, change the Committed date, and the working date too if the plan moved.
 
@@ -68,6 +69,7 @@ For each item, cite the source with a short quote. Then:
 
 - Read each tool's input schema before calling it; names differ from tool to tool. `get_project` takes the project's id (or exact title), not a project id field. `preview_schedule_change` takes the entity type, the item's id and the new date. `post_status_update` takes the project, the update as markdown, and, for an update on an item, the item's kind and its id or key. `post_item_update` names each item by that item's own id field (a task id, risk id or milestone id).
 
+- Keep the parity sharing rule. If the person asks to turn it off, say what it does and recommend keeping it; turn it off only after they confirm again.
 - "It's running late" is a risk or a forecast note, never a quiet change to the plan.
 - A risk closes on evidence that its conditions are gone, never because it went quiet. Partly mitigated isn't resolved.
 - Starting isn't finishing, and "should be done Friday" isn't done. Leave ambiguous items open.
