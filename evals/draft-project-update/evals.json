@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Draft this week's client update for the Northwind website redesign.",
-      "expected_output": "Uses get_writing_context with the client audience and the snapshot, leads with the status and why, writes risks as Risk / Impact / Recommendation, keeps internal deliberation out but the honest status in, shows the draft, and warns that a posted update can't be edited before posting.",
+      "expected_output": "Uses get_writing_context with the client audience and the snapshot, leads with the status and why, writes risks as Risk / Impact / Recommendation, keeps internal deliberation out but the honest status in, shows the draft, and warns before posting that a posted update can be edited only for an hour.",
       "files": [],
       "assertions": [
         "Calls get_writing_context with the client audience",
@@ -12,7 +12,7 @@
         "Mentions the content timing risk honestly with a recommendation",
         "Leaves out sentiment readings and internal deliberation",
         "Shows a draft and does not post without approval",
-        "Says a posted update can't be edited"
+        "Says a posted update can be edited only within the hour of posting"
       ]
     },
     {
@@ -36,6 +36,29 @@
         "Says Penroe can't send email",
         "Offers a recurring recipe or schedule that drafts rather than posts on its own",
         "Does not post a status update"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Just got off a call with Northwind. They have a new procurement lead, Dana Reyes, and they were happy with the launch. Can you put that in Penroe?",
+      "expected_output": "Treats this as news about the client account rather than one project's status. Finds the Northwind account, reads its existing updates with list_status_updates and account_id, drafts an update that names the account, waits for confirmation, then posts it with post_status_update and account_id, with no project, item or source.",
+      "files": [],
+      "assertions": [
+        "Posts on the account, not on a project",
+        "Reads the account's existing updates before drafting",
+        "Shows the draft with the account's name and does not post without approval",
+        "Passes account_id and no project_id, item or source when posting"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The Northwind website redesign launch will slip two weeks because their content is late. Post that update.",
+      "expected_output": "Treats this as news about one project's schedule, not about the client account. Shows a draft and waits for confirmation, then posts it on the project with post_status_update and project_id, with no account_id.",
+      "files": [],
+      "assertions": [
+        "Posts on the project, not on the account",
+        "Shows the draft and does not post without approval",
+        "Passes project_id and no account_id when posting"
       ]
     }
   ],

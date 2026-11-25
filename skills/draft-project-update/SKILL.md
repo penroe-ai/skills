@@ -1,6 +1,6 @@
 ---
 name: draft-project-update
-description: Drafts a status update for one Penroe project, or a roll-up across several, for the project team, leadership or the client. Leads with the status and why, reports progress against the plan, risks with their impact and recommendation, and specific asks with owners, then posts it to the project or saves it as a document once the person approves. Use when someone asks for a status update, status report, weekly update, client update, progress report, portfolio summary or recurring update about their Penroe projects.
+description: Drafts a status update for one Penroe project, or a roll-up across several, for the project team, leadership or the client. Leads with the status and why, reports progress against the plan, risks with their impact and recommendation, and specific asks with owners, then posts it to the project or saves it as a document once the person approves. Use when someone asks for a status update, status report, weekly update, client update, progress report, portfolio summary or recurring update about their Penroe projects. Also posts an update about a client account, such as logging how a call went, a note on a client, or a new contact, once approved.
 ---
 
 # Draft a project update
@@ -57,7 +57,7 @@ Cite item keys and name sources inline. Match the length to the audience: leader
 
 - Show the full draft and ask the person to confirm or edit it.
 - If they disagree with Penroe's status, show both readings and let them choose the wording. Never quietly re-derive it.
-- Before posting, tell them that a posted status update can't be edited. A correction is a new update.
+- Before posting, tell them they can change the words of a posted project update with `edit_status_update` for an hour after posting it. Editing doesn't undo anything Penroe already changed because of it, and after the hour a correction is a new update. An update about an account can't be edited from here.
 
 ## 5. Post or save
 
@@ -65,9 +65,20 @@ Cite item keys and name sources inline. Match the length to the audience: leader
 - To keep it as a document, or for a client version they'll send themselves: `add_project_document`. It's visible only to them until they share it.
 - Penroe can't email the update. Say so if they ask, and offer the document instead.
 
+## An update about a client account
+
+Some news is about the client, not one project's work: how a call with them went, a new person on their side and their role, a lasting fact such as "their legal team reviews every SOW", or how they feel about working with the firm. Post that on the account instead of a project.
+
+1. Find the account: `list_accounts` on one of the client's projects, or the accounts `get_project` returns. Use its id as account_id.
+2. Read what the team has already said: `list_status_updates` with account_id. Each update shows its replies and what Penroe changed on the account from it, so you don't repeat it.
+3. Draft it in the person's words, and show it with the account's name. Wait for them to confirm, as in step 4 above.
+4. Post it with `post_status_update` and account_id, or reply to one of the account's updates with reply_to as well.
+
+Penroe reads an account update for the account's contacts, facts and client sentiment, and never changes a project, task or date from it. Put project news on the project. An account update takes no item and no source: say what it is based on in the text. These updates are internal and never shared with the client. If the tool says the account was not found, tell the person updates about that account aren't available to them.
+
 ## Recurring updates
 
-When the person wants this every week (or on another schedule), write out a short recipe in your reply (don't just offer one) to paste into their assistant's scheduled tasks: the projects, audience, sections and day. A scheduled run has no one to confirm it, so the recipe saves a draft document (`add_project_document`) for the person to review and post. It never posts on its own.
+When the person wants this every week (or on another schedule), write out a short recipe in your reply (don't just offer one) to paste into their assistant's scheduled tasks: the projects, audience, sections and day. A scheduled run has no one to confirm it, so the recipe saves a draft document (`add_project_document`) for the person to review and post. It never posts on its own, and it never posts an update about a client account.
 
 ## Gotchas
 
