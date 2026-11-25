@@ -21,7 +21,10 @@
         "Creates the Fernhill account with the fernhillcoffee.example domain and Riley Chen as a contact",
         "Adds the SOW's assumptions as risks after the go-ahead, having shown them as proposed risks first",
         "Does not add labeled suggestions (work not in the SOW) on a plain go-ahead",
-        "Reports what's left to do in the Penroe app"
+        "Reports what's left to do in the Penroe app",
+        "Proposes one sharing rule for anyone at the Fernhill account and says the project keeps its default parity rule",
+        "Does not add the sharing rule on a plain go-ahead, because it needs its own yes",
+        "Never calls delete_sharing_rule"
       ]
     },
     {
@@ -131,6 +134,40 @@
         "Calls get_project on the new project after creating it",
         "Follows the plays that cover the project",
         "Does not claim the project has engagement guidance when it was not made from a template"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Here's the signed SOW for Fernhill Coffee. Set the project up in Penroe.",
+      "expected_output": "Proposes the project as usual, including one sharing rule that brings in email and meetings with anyone at the Fernhill account from the person's own mail, with the last 90 days. After the person approves it along with the rest, checks the project's rules with list_sharing_rules, leaves the parity rule in place, adds the account rule with save_sharing_rule, and reports how many earlier items were added and how many are waiting.",
+      "files": [
+        "fernhill-sow.md"
+      ],
+      "followups": [
+        "Looks right. Go ahead, and add the sharing rule."
+      ],
+      "assertions": [
+        "Proposes the account sharing rule and asks for its own yes before writing anything",
+        "Creates the account, project and contacts before the sharing rule",
+        "Calls list_sharing_rules before save_sharing_rule",
+        "Calls save_sharing_rule with condition participants_at_least and the Fernhill account as the only subject",
+        "Leaves the audience as the person's own mail (self) rather than the team",
+        "Does not delete or replace the parity rule",
+        "Reports the earlier items added and still waiting from the save result"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Set up an internal project for our own website refresh: three phases, design, build and launch, finishing by the end of next quarter. There's no client.",
+      "expected_output": "Creates an internal project with no account and proposes no account sharing rule, because there is no client account to match.",
+      "files": [],
+      "followups": [
+        "Looks right. Go ahead."
+      ],
+      "assertions": [
+        "Creates the project with internal: true",
+        "Does not propose or call save_sharing_rule for an account",
+        "Never calls delete_sharing_rule"
       ]
     }
   ],
