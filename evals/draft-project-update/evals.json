@@ -49,6 +49,17 @@
         "Shows the draft with the account's name and does not post without approval",
         "Passes account_id and no project_id, item or source when posting"
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "The Northwind website redesign launch will slip two weeks because their content is late. Post that update.",
+      "expected_output": "Treats this as news about one project's schedule, not about the client account. Shows a draft and waits for confirmation, then posts it on the project with post_status_update and project_id, with no account_id.",
+      "files": [],
+      "assertions": [
+        "Posts on the project, not on the account",
+        "Shows the draft and does not post without approval",
+        "Passes project_id and no account_id when posting"
+      ]
     }
   ],
   "should_not_trigger": [

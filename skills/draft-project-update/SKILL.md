@@ -1,6 +1,6 @@
 ---
 name: draft-project-update
-description: Drafts a status update for one Penroe project, or a roll-up across several, for the project team, leadership or the client. Leads with the status and why, reports progress against the plan, risks with their impact and recommendation, and specific asks with owners, then posts it to the project or saves it as a document once the person approves. Use when someone asks for a status update, status report, weekly update, client update, progress report, portfolio summary or recurring update about their Penroe projects. Also posts an update about a client account, such as how a call went or a new contact, once approved.
+description: Drafts a status update for one Penroe project, or a roll-up across several, for the project team, leadership or the client. Leads with the status and why, reports progress against the plan, risks with their impact and recommendation, and specific asks with owners, then posts it to the project or saves it as a document once the person approves. Use when someone asks for a status update, status report, weekly update, client update, progress report, portfolio summary or recurring update about their Penroe projects. Also posts an update about a client account, such as logging how a call went, a note on a client, or a new contact, once approved.
 ---
 
 # Draft a project update
@@ -78,7 +78,7 @@ Penroe reads an account update for the account's contacts, facts and client sent
 
 ## Recurring updates
 
-When the person wants this every week (or on another schedule), write out a short recipe in your reply (don't just offer one) to paste into their assistant's scheduled tasks: the projects, audience, sections and day. A scheduled run has no one to confirm it, so the recipe saves a draft document (`add_project_document`) for the person to review and post. It never posts on its own.
+When the person wants this every week (or on another schedule), write out a short recipe in your reply (don't just offer one) to paste into their assistant's scheduled tasks: the projects, audience, sections and day. A scheduled run has no one to confirm it, so the recipe saves a draft document (`add_project_document`) for the person to review and post. It never posts on its own, and it never posts an update about a client account.
 
 ## Gotchas
 
